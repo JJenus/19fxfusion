@@ -1,0 +1,39 @@
+{
+	"name": "nuxt-app",
+	"private": true,
+	"scripts": {
+		"build": "nuxt build --preset=vercel_edge --dotenv .env",
+		"dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 nuxt dev --dotenv .env.local",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview --dotenv .env",
+		"postinstall": "nuxt prepare"
+	},
+	"devDependencies": {
+		"@nuxt/devtools": "latest",
+		"@types/axios": "^0.14.0",
+		"@types/cleave.js": "^1.4.7",
+		"@types/moment": "^2.13.0",
+		"@types/node": "^18.17.3",
+		"nuxt": "^3.6.5"
+	},
+	"dependencies": {
+		"@chatra/chatra": "^1.0.3",
+		"@nuxt/image": "^1.3.0",
+		"@stomp/stompjs": "^7.0.0",
+		"axios": "^1.5.0",
+		"cleave.js": "^1.6.0",
+		"currency.js": "^2.0.4",
+		"express": "^4.18.2",
+		"highcharts": "^11.4.3",
+		"html5-qrcode": "^2.3.8",
+		"lightweight-charts": "^4.1.4",
+		"moment": "^2.29.4",
+		"nuxt-swiper": "^1.2.2",
+		"nuxt-tradingview": "^1.3.1",
+		"qrcode": "^1.5.3",
+		"stompjs": "^2.3.3",
+		"sweetalert2": "^11.7.27",
+		"swiper": "^10.3.1",
+		"ws": "^8.17.0"
+	}
+}

@@ -1,0 +1,4 @@
+<template>
+	<AppSettingsEmail />
+	<AppSettingsNotification />
+</template>
