@@ -243,7 +243,7 @@
 					</div>
 
 					<!--end::Close-->
-				</div>
+				</div> 
 
 				<div class="modal-body mt-lg-3 pt-0">
 					<form

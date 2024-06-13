@@ -49,7 +49,7 @@
 						data-kt-menu-expand="false"
 					>
 						<!--begin:Menu item-->
-						<a href="/account" class="menu-item menu-accordion">
+						<a  href="/account" class="menu-item menu-accordion">
 							<!--begin:Menu link--><span class="menu-link"
 								><span class="menu-icon">
 									<i class="ki-solid fs-2 ki-user"> </i>
@@ -57,18 +57,20 @@
 								<span class="menu-title">Profile</span>
 							</span>
 						</a>
-						<a
-							href="/studio/create"
-							data-kt-menu-trigger="click"
+						<div
+							role="button"
+							data-bs-toggle="modal"
+							data-bs-target="#kt_modal_login"
+							@click="useAuth().openAuthModal('register')"
 							class="menu-item menu-accordion"
 						>
 							<!--begin:Menu link--><span class="menu-link"
 								><span class="menu-icon">
-									<i class="ki-solid fs-2 ki-pencil"> </i>
+									<i class="ki-solid fs-2 ki-user-edit"> </i>
 								</span>
-								<span class="menu-title">Create</span></span
+								<span class="menu-title">Sign up</span></span
 							>
-						</a>
+						</div>
 						<!--end:Menu item--><!--begin:Menu item-->
 						<div
 							data-kt-menu-trigger="click"
@@ -113,25 +115,7 @@
 										>
 									</span>
 								</NuxtLink>
-								<!--end:Menu item--><!--begin:Menu item-->
-								<div
-									data-kt-menu-trigger="click"
-									class="menu-item d-none menu-accordion"
-								>
-									<!--begin:Menu link--><span
-										class="menu-link"
-										><span class="menu-bullet"
-											><span
-												class="bullet bullet-dot"
-											></span></span
-										><span class="menu-title">
-											What is NFT
-										</span>
-									</span>
-									<!--end:Menu link--><!--begin:Menu sub-->
-
-									<!--end:Menu sub-->
-								</div>
+								<!--end:Menu item-->
 							</div>
 							<!--end:Menu sub-->
 						</div>
@@ -196,9 +180,17 @@
 				class="app-sidebar-footer overflow-hidden flex-column-auto m-9"
 				id="kt_app_sidebar_footer"
 			>
+				<button
+					class="btn btn-light-primary w-100 mb-7"
+					data-bs-toggle="modal"
+					data-bs-target="#kt_modal_login"
+					@click="useAuth().openAuthModal('login')"
+				>
+					Sign in
+				</button>
 				<!--begin::Card-->
 				<div class="d-flex justify-content-center w-100">
-					<NFTexLogo :classes="'h-30px'" />
+					<NFTexLogoMini :classes="'h-20px'" :app-class="'fs-8'" />
 				</div>
 				<!--end::Card-->
 			</div>

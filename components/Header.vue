@@ -52,7 +52,7 @@
 
 <template>
 	<div
-	style="z-index: 22;"
+		style="z-index: 22"
 		id="kt_app_header"
 		class="app-header d-flex border-0 bg-transparent"
 		:data-kt-sticky="true"
@@ -108,50 +108,6 @@
 
 			<!--begin::Navbar-->
 			<div class="app-navbar flex-shrink-0" id="kt_app_aside_navbar">
-				<!--begin::Login-->
-				<div class="app-navbar-item ms-n3w">
-					<!--begin::Menu- wrapper-->
-					<div
-						v-if="!auth.isAuthenticated()"
-						class="btn btn-secondary btn-custom fw-bold btn-active-light btn-active-color-white btn-color-white d-none"
-						data-bs-toggle="modal"
-						data-bs-target="#kt_modal_login"
-						@click="useAuth().openAuthModal('login')"
-					>
-						<i class="ki-outline ki-entrance-left fs-2"></i> Sign in
-					</div>
-
-					<div v-else>
-						<div
-							class="d-none btn theme-light-show btn-outline btn-outline-info btn-custom fw-bold"
-							data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-							data-kt-menu-attach="parent"
-							data-kt-menu-placement="bottom"
-						>
-							<i class="ki-solid ki-wallet fs-2 me-1"></i>
-							<span class="pb-5">
-								{{ amount() }}
-							</span>
-						</div>
-						<div
-							class="btn btn-secondary theme-dark-show btn-custom fw-bold btn-active-light btn-active-color-white btn-color-white"
-							data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-							data-kt-menu-attach="parent"
-							data-kt-menu-placement="bottom"
-						>
-							<i
-								class="ki-solid ki-wallet fs-2 text-warning me-1"
-							></i>
-							<span class="pb-5">
-								{{ amount() }}
-							</span>
-						</div>
-						<BalanceDropdown class="d-none" />
-					</div>
-					<!--end::Menu wrapper-->
-				</div>
-				<!--end::Login-->
-
 				<!--begin::Search-->
 
 				<!--end::Search-->
@@ -166,7 +122,6 @@
 					<a
 						href="/app"
 						class="cursor-pointer d-nonei d-lg-block symbol symbol-circle ms-2 symbol-35px symbol-lg-50px ms-0 ms-lg-3"
-						
 						v-if="auth.isAuthenticated()"
 					>
 						<!--begin::Drawer toggle-->
@@ -177,7 +132,7 @@
 									: $config.public.DEFAULT_DP
 							"
 							alt="user"
-							class="border border-info border-2"
+							class=""
 						/>
 						<!--end::Drawer toggle-->
 					</a>

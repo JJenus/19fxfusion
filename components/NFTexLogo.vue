@@ -29,8 +29,8 @@
 			:class="classes"
 			class="theme-dark-showi"
 		/>
-		<span class="fw-bold fs-3x truculenta-ero text-danger theme-dark-show">19Fx</span>
-		<span class="fw-bold fs-3x truculenta-ero  theme-light-show text-warning">19Fx</span>
+		<span :class="appClass" class="fw-bold fs-3x truculenta-ero text-danger theme-dark-show">19Fx</span>
+		<span :class="appClass" class="fw-bold fs-3x truculenta-ero  theme-light-show text-warning">19Fx</span>
 	</a>
 </template>
 

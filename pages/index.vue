@@ -145,8 +145,9 @@
 											worldwide platform. Access multiple
 											markets and currencies, all from a
 											user-friendly, multilingual
-											interface. </span
-										><!--end::Desc-->
+											interface.
+										</span>
+										<!--end::Desc-->
 									</div>
 									<!--end::Stats-->
 								</div>

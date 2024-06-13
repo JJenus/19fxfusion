@@ -240,7 +240,7 @@
 		<!--begin::Card body-->
 		<div class="card-body">
 			<form @submit.prevent="send()" class="px-5 px-md-0 px-xl-15">
-				<div class="mb-5">
+				<div class="mb-5 px-5 px-lg-20">
 					<input
 						:disabled="next"
 						ref="moneyInput"
@@ -252,66 +252,14 @@
 				</div>
 
 				<div v-if="next" class="mb-8 min-h-250px">
-					<div class="d-flex flex-center flex-row mb-5">
-						<button
-							@click="active = true"
-							:class="active ? 'active' : ''"
-							type="button"
-							class="btn w-100 btn-light-primary btn-active-light-info fw-semibold me-2"
-						>
-							<i class="ki-solid ki-dollar fs-3"></i>
-							To Elisa
-						</button>
-						<button
-							@click="active = false"
-							:class="!active ? 'active' : ''"
-							type="button"
-							class="btn w-100 btn-light-primary btn-active-light-info fw-semibold me-2"
-						>
-							<i class="ki-solid ki-bank fs-3"></i>
-							Banks
-						</button>
-					</div>
-
-					<AppTransactionToElisa
-						v-if="active"
-						:amount="form.amount"
-					/>
-
-					<AppTransactionToBank v-else />
+					<AppTransactionToBank />
 				</div>
 
 				<div v-else>
-					<div class="d-flex flex-row mb-8 justify-content-end w-100">
-						<button
-							type="button"
-							class="btn btn-sm btn-light-primary fw-semibold me-2"
-						>
-							<i class="ki-solid ki-dollar"></i>
-							Request payment
-						</button>
-						<NuxtLink
-							to="/app/scan"
-							class="btn btn-sm btn-light-warning fw-semibold me-2"
-						>
-							<i class="ki-duotone ki-scan-barcode">
-								<i class="path1"></i>
-								<i class="path2"></i>
-								<i class="path3"></i>
-								<i class="path4"></i>
-								<i class="path5"></i>
-								<i class="path6"></i>
-								<i class="path7"></i>
-								<i class="path8"></i>
-							</i>
-							Scan
-						</NuxtLink>
-					</div>
-
-					<div class="row flex-row row-cols-3 justify-content-end">
+					<div class="row flex-row row-cols-3 justify-content-end g-2">
 						<div
 							v-for="btn in buttons"
-							class="col justify-content-center d-flex mb-4"
+							class="col justify-content-center d-flex"
 						>
 							<button
 								type="button"
@@ -321,7 +269,7 @@
 								{{ btn.num }}
 							</button>
 						</div>
-						<div class="col justify-content-center d-flex mb-4">
+						<div class="col justify-content-center d-flex gap-2">
 							<button
 								type="button"
 								@mouseup="stopDel"
@@ -336,7 +284,7 @@
 					</div>
 				</div>
 
-				<div :class="next ? 'd-flex flex-row' : ''" class="mt-4">
+				<div :class="next ? 'd-flex flex-row' : ''" class="mt-4 px-5 px-lg-20">
 					<button
 						@click="back()"
 						v-if="next"
