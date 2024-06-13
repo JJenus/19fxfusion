@@ -22,7 +22,7 @@
 		},
 		{
 			name: "About",
-			path: "/resources/about",
+			path: "/resources/about-us",
 		},
 		{
 			name: "Contact-Us",
@@ -66,7 +66,7 @@
 		>
 			<!--begin::Logo-->
 			<div class="d-flex d-lg-none align-items-center me-auto">
-				<NFTexLogo :classes="'h-30px ms-n3'" />
+				<NFTexLogo :classes="'h-40px ms-n3'" />
 			</div>
 
 			<div class="d-none d-lg-flex align-items-center">
@@ -113,7 +113,7 @@
 					<!--begin::Menu- wrapper-->
 					<div
 						v-if="!auth.isAuthenticated()"
-						class="btn btn-secondary btn-custom fw-bold btn-active-light btn-active-color-white btn-color-white"
+						class="btn btn-secondary btn-custom fw-bold btn-active-light btn-active-color-white btn-color-white d-none"
 						data-bs-toggle="modal"
 						data-bs-target="#kt_modal_login"
 						@click="useAuth().openAuthModal('login')"

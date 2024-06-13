@@ -28,7 +28,7 @@
 	>
 		<img
 			alt="Logo"
-			src="/assets/media/logos/paycifik.png"
+			src="/assets/media/logos/19logo.png"
 			:class="classes"
 			class=""
 		/>

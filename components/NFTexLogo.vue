@@ -22,15 +22,15 @@
 </script>
 
 <template>
-	<a href="/" class="d-flex text-dark align-items-end ps-3">
+	<a href="/" class="d-flex text-darki align-items-center ps-3 gap-3">
 		<img
 			alt="Logo"
-			src="/assets/media/logos/paycifik.png"
+			src="/assets/media/logos/19logo.png"
 			:class="classes"
-			class="theme-dark-showi mb-3 mb-lg-4"
+			class="theme-dark-showi"
 		/>
-		<span class="fw-bold fs-3x truculenta-ero theme-dark-show">aycifik</span>
-		<span class="fw-bold fs-3x truculenta-ero  theme-light-show text-warning">aycifik</span>
+		<span class="fw-bold fs-3x truculenta-ero text-danger theme-dark-show">19Fx</span>
+		<span class="fw-bold fs-3x truculenta-ero  theme-light-show text-warning">19Fx</span>
 	</a>
 </template>
 

@@ -231,7 +231,7 @@
 									>
 
 									<span class="text-gray-700 fs-4 fw-bold">
-										+1 (228) 888-8515
+										{{ $config.public.MOBILE }}
 									</span>
 								</div>
 								<!--end::Item-->
@@ -286,9 +286,9 @@
 									>
 
 									<a
-										href="mailto:support@elisafinance.com"
+										:href="`mailto:support@${$config.public.APP}.com`"
 										class="text-gray-700 text-hover-primary fs-4 fw-bold"
-										>support@elisafinance.com</a
+										>support@{{ $config.public.APP }}.com</a
 									>
 								</div>
 								<!--end::Item-->

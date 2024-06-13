@@ -34,9 +34,9 @@
 					<div class="col-md-5">
 						<h2 class="fs-2qx text-danger mb-2">Stay informed</h2>
 						<p>
-							Reach us on
+							Reach us on WhatsApp
 							<br />
-							+1 (228) 888-1615
+							{{ $config.public.MOBILE }}
 						</p>
 						<p class="mb-5">
 							Don’t miss, to subscribe to our new feeds, kindly

@@ -26,7 +26,8 @@ export default defineNuxtConfig({
 		BE_API: process.env.BE_API || "https://paycifik.alwaysdata.net/api",
 		public: {
 			BE_API: process.env.BE_API || "https://paycifik.alwaysdata.net/api",
-			APP: "Paycifik",
+			APP: "19Fx",
+			MOBILE: "+1 (228) 888-8515",
 			CLOUD_NAME: "dpangnog4",
 			CLOUD_KEY: "232136269489291",
 			CLOUD_SECRETE: "B3_WYvhc4C_MSW6RCW-r-O-tiD4",
@@ -53,7 +54,7 @@ export default defineNuxtConfig({
 				},
 				{
 					name: "twitter:title",
-					content: "Paycifik",
+					content: "19Fx",
 				},
 				{
 					name: "twitter:description",
@@ -66,7 +67,7 @@ export default defineNuxtConfig({
 				},
 				{
 					property: "og:title",
-					content: "Paycifik",
+					content: "19Fx",
 				},
 				{
 					property: "og:description",

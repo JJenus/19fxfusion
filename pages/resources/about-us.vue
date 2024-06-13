@@ -17,7 +17,7 @@
 					<!--begin::Title-->
 					<div class="mb-9">
 						<h3 class="fs-2qx fw-bold text-dark">
-							{{ CONFIG.APP }}
+							About Us
 						</h3>
 
 						<span class="fs-5 fw-semibold text-gray-400"> </span>
@@ -53,11 +53,11 @@
 						<!--begin::Text-->
 						<p class="mb-8">
 							At {{ CONFIG.APP }}, we're committed to
-							revolutionizing the way you bank. Our team of
-							experts has crafted innovative fintech solutions
+							revolutionizing the way you trade. Our team of
+							experts has crafted innovative analytics solutions
 							tailored to your needs. With a focus on security,
 							simplicity, and convenience, we're dedicated to
-							providing you with the best banking experience
+							providing you with the best trading experience
 							possible. Discover the {{ CONFIG.APP }} Difference
 							Today!
 						</p>
@@ -77,7 +77,7 @@
 
 						<!--begin::Description-->
 						<span class="fs-5 fw-semibold text-muted">
-							Make financial transactions much easier
+							Make trading transactions much easier
 						</span>
 						<!--begin::Description-->
 					</div>
@@ -103,7 +103,7 @@
 											class="fw-semibold text-gray-800 text-center lh-lg"
 										>
 											<span class="fw-bolder">
-												Transfer
+												Trades
 											</span>
 										</h1>
 										<!--end::Title-->
@@ -113,9 +113,7 @@
 											class="py-10 text-center"
 											bis_skin_checked="1"
 										>
-											<i
-												class="ki-duotone ki-arrow-right-left fs-5x text-success"
-											>
+											<i class="ki-duotone ki-graph-4 fs-5x text-success">
 												<span class="path1"></span>
 												<span class="path2"></span>
 											</i>
@@ -168,7 +166,7 @@
 											class="fw-semibold text-gray-800 text-center lh-lg"
 										>
 											<span class="fw-bolder">
-												Accept payments
+												Assisted Deposit
 											</span>
 										</h1>
 										<!--end::Title-->
@@ -256,7 +254,7 @@
 											class="fw-semibold text-gray-800 text-center lh-lg"
 										>
 											<span class="fw-bolder">
-												Request payment
+												Easy Withdrawal
 											</span>
 										</h1>
 										<!--end::Title-->
@@ -326,7 +324,7 @@
 											class="fw-semibold text-gray-800 text-center lh-lg"
 										>
 											<span class="fw-bolder">
-												Manage Your finances
+												Manage Your trades
 											</span>
 										</h1>
 										<!--end::Title-->
@@ -582,7 +580,7 @@
 									>
 										<span class="symbol-label">
 											<i
-												class="ki-outline ki-bank fs-1 text-primary"
+												class="ki-outline ki-trade fs-1 text-primary"
 											></i>
 										</span>
 									</div>

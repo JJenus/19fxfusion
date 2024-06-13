@@ -15,212 +15,19 @@
 				<div
 					class="d-flex flex-wrap justify-content-between align-items-center"
 				>
-					<div class="bg-transparent">
-						<div class="mw-400px ms-md-4i ms-lg-6">
-							<h1 class="display-2 text-capitalized">
-								<span class="me-2"
-									>TRADE THE MARKETS WITH THE</span
-								>
-								<span class="text-danger"
-									>BEST TRADING CONDITIONS</span
-								>
-							</h1>
-						</div>
+					<div class="bg-transparent mw-400px mb-5 mb-lg-0">
+						<h1 class="display-2 text-capitalized">
+							<span class="me-3">TRADE THE MARKETS WITH THE</span>
+							<span class="text-danger"
+								>BEST TRADING CONDITIONS</span
+							>
+						</h1>
 					</div>
-					<div class="w-lg-50">
-						<div class="mx-n16 me-lg-n20 rounded me-lg-0">
+					<div class="w-lg-700px position-relativeu">
+						<div class="w-100 rounded">
 							<SwiperMainSlide />
 						</div>
 					</div>
-				</div>
-
-				<!-- WHAT TO EXPECT -->
-				<div class="row my-1 row-cols-1 row-cols-lg-3 g-10">
-					<div class="col">
-						<div class="card card-flush mb-6" bis_skin_checked="1">
-							<!--begin::Body-->
-							<div class="card-body" bis_skin_checked="1">
-								<div
-									class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5 w-100 h-250px"
-									bis_skin_checked="1"
-								>
-									<!--begin::Symbol-->
-									<div
-										class="symbol symbol-100px me-5 mb-8"
-										bis_skin_checked="1"
-									>
-										<span
-											class="symbol-label position-relative"
-											><i
-												style="font-size: 10rem"
-												class="ki-outline ki-compass text-primary position-relative"
-											></i
-										></span>
-									</div>
-									<!--end::Symbol--><!--begin::Stats-->
-									<div class="m-0" bis_skin_checked="1">
-										<!--begin::Number--><span
-											class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1"
-											>Worldwide</span
-										><!--end::Number--><!--begin::Desc-->
-										<span
-											class="text-gray-500 fw-semibold fs-6"
-										>
-											Trade anywhere, anytime with our
-											worldwide platform. Access multiple
-											markets and currencies, all from a
-											user-friendly, multilingual
-											interface. </span
-										><!--end::Desc-->
-									</div>
-									<!--end::Stats-->
-								</div>
-								<!--end::Items-->
-								<!--end::Row-->
-								<!--end::Stats-->
-							</div>
-							<!--end::Body-->
-						</div>
-					</div>
-
-					<div class="col">
-						<div class="card card-flush mb-6" bis_skin_checked="1">
-							<!--begin::Body-->
-							<div class="card-body" bis_skin_checked="1">
-								<div
-									class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5 w-100 h-250px"
-									bis_skin_checked="1"
-								>
-									<!--begin::Symbol-->
-									<div
-										class="symbol symbol-100px me-5 mb-8"
-										bis_skin_checked="1"
-									>
-										<span
-											class="symbol-label position-relative"
-											><i
-												style="font-size: 10rem"
-												class="ki-solid ki-lock-2 text-primary position-relative"
-											></i
-										></span>
-									</div>
-									<!--end::Symbol--><!--begin::Stats-->
-									<div class="m-0" bis_skin_checked="1">
-										<!--begin::Number--><span
-											class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1"
-											>Secure</span
-										><!--end::Number--><!--begin::Desc-->
-										<span
-											class="text-gray-500 fw-semibold fs-6"
-										>
-											our security is our priority.
-											Benefit from top-tier encryption,
-											two-factor authentication, and
-											robust fraud prevention, all within
-											a regulated and trusted framework. </span
-										><!--end::Desc-->
-									</div>
-									<!--end::Stats-->
-								</div>
-								<!--end::Items-->
-								<!--end::Row-->
-								<!--end::Stats-->
-							</div>
-							<!--end::Body-->
-						</div>
-					</div>
-
-					<div class="col">
-						<div class="card card-flush mb-6" bis_skin_checked="1">
-							<!--begin::Body-->
-							<div class="card-body" bis_skin_checked="1">
-								<div
-									class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5 w-100 h-250px"
-									bis_skin_checked="1"
-								>
-									<!--begin::Symbol-->
-									<div
-										class="symbol symbol-100px me-5 mb-8"
-										bis_skin_checked="1"
-									>
-										<span
-											class="symbol-label position-relative"
-											><i
-												style="font-size: 10rem"
-												class="ki-outline ki-award text-primary position-relative"
-											></i
-										></span>
-									</div>
-									<!--end::Symbol--><!--begin::Stats-->
-									<div class="m-0" bis_skin_checked="1">
-										<!--begin::Number--><span
-											class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1"
-											>Awarded</span
-										><!--end::Number--><!--begin::Desc-->
-										<span
-											class="text-gray-500 fw-semibold fs-6"
-										>
-											Join the best. Our platform is
-											celebrated for innovation,
-											exceptional customer service, and
-											reliable performance by industry
-											leaders and financial institutions. </span
-										><!--end::Desc-->
-									</div>
-									<!--end::Stats-->
-								</div>
-								<!--end::Items-->
-								<!--end::Row-->
-								<!--end::Stats-->
-							</div>
-							<!--end::Body-->
-						</div>
-					</div>
-				</div>
-
-				<div class="row row-cols-1 row-cols-lg-3 mb-5 d-none">
-					<div class="col rounded-3">
-						<TVMiniChart
-							:options="{
-								width: '100%',
-								height: 200,
-								colorTheme: 'dark',
-								symbol: 'FX:EURUSD',
-								locale: 'en',
-								dateRange: '12M',
-								isTransparent: false,
-								autosize: false,
-								largeChartUrl: '',
-							}"
-						/>
-					</div>
-					<div class="col rounded-3">
-						<TVSingleTicker
-							:options="{
-								colorTheme: 'dark',
-								symbol: 'FX:USDJPY',
-								width: '100%',
-								hight: 1300,
-								isTransparent: false,
-								locale: 'en',
-							}"
-						/>
-					</div>
-				</div>
-
-				<div class="mb-5">
-					<TVScreener
-						:options="{
-							width: '100%',
-							height: 450,
-							colorTheme: 'dark',
-							defaultColumn: 'overview',
-							defaultScreen: 'general',
-							market: 'forex',
-							showToolbar: true,
-							locale: 'en',
-						}"
-					/>
 				</div>
 
 				<div
@@ -302,10 +109,201 @@
 					<!--end::Body-->
 				</div>
 
+				<!-- WHAT TO EXPECT -->
+				<div class="row my-1 row-cols-1 row-cols-lg-3 g-10">
+					<div class="col">
+						<div class="card card-flush mb-6" bis_skin_checked="1">
+							<!--begin::Body-->
+							<div class="card-body" bis_skin_checked="1">
+								<div
+									class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5 w-100 h-275px"
+									bis_skin_checked="1"
+								>
+									<!--begin::Symbol-->
+									<div
+										class="symbol symbol-100px me-5 mb-8"
+										bis_skin_checked="1"
+									>
+										<span
+											class="symbol-label position-relative"
+											><i
+												style="font-size: 10rem"
+												class="ki-outline ki-compass text-success position-relative"
+											></i
+										></span>
+									</div>
+									<!--end::Symbol--><!--begin::Stats-->
+									<div class="m-0" bis_skin_checked="1">
+										<!--begin::Number--><span
+											class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1"
+											>Worldwide</span
+										><!--end::Number--><!--begin::Desc-->
+										<span
+											class="text-gray-500 fw-semibold fs-6"
+										>
+											Trade anywhere, anytime with our
+											worldwide platform. Access multiple
+											markets and currencies, all from a
+											user-friendly, multilingual
+											interface. </span
+										><!--end::Desc-->
+									</div>
+									<!--end::Stats-->
+								</div>
+								<!--end::Items-->
+								<!--end::Row-->
+								<!--end::Stats-->
+							</div>
+							<!--end::Body-->
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="card card-flush mb-6" bis_skin_checked="1">
+							<!--begin::Body-->
+							<div class="card-body" bis_skin_checked="1">
+								<div
+									class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5 w-100 h-275px"
+									bis_skin_checked="1"
+								>
+									<!--begin::Symbol-->
+									<div
+										class="symbol symbol-100px me-5 mb-8"
+										bis_skin_checked="1"
+									>
+										<span
+											class="symbol-label position-relative"
+											><i
+												style="font-size: 10rem"
+												class="ki-solid ki-lock-2 text-danger position-relative"
+											></i
+										></span>
+									</div>
+									<!--end::Symbol--><!--begin::Stats-->
+									<div class="m-0" bis_skin_checked="1">
+										<!--begin::Number--><span
+											class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1"
+											>Secure</span
+										><!--end::Number--><!--begin::Desc-->
+										<span
+											class="text-gray-500 fw-semibold fs-6"
+										>
+											our security is our priority.
+											Benefit from top-tier encryption,
+											two-factor authentication, and
+											robust fraud prevention, all within
+											a regulated and trusted framework. </span
+										><!--end::Desc-->
+									</div>
+									<!--end::Stats-->
+								</div>
+								<!--end::Items-->
+								<!--end::Row-->
+								<!--end::Stats-->
+							</div>
+							<!--end::Body-->
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="card card-flush mb-6" bis_skin_checked="1">
+							<!--begin::Body-->
+							<div class="card-body" bis_skin_checked="1">
+								<div
+									class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5 w-100 h-275px"
+									bis_skin_checked="1"
+								>
+									<!--begin::Symbol-->
+									<div
+										class="symbol symbol-100px me-5 mb-8"
+										bis_skin_checked="1"
+									>
+										<span
+											class="symbol-label position-relative"
+											><i
+												style="font-size: 10rem"
+												class="ki-outline ki-award text-warning position-relative"
+											></i
+										></span>
+									</div>
+									<!--end::Symbol--><!--begin::Stats-->
+									<div class="m-0" bis_skin_checked="1">
+										<!--begin::Number--><span
+											class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1"
+											>Awarded</span
+										><!--end::Number--><!--begin::Desc-->
+										<span
+											class="text-gray-500 fw-semibold fs-6"
+										>
+											Join the best. Our platform is
+											celebrated for innovation,
+											exceptional customer service, and
+											reliable performance by industry
+											leaders and financial institutions. </span
+										><!--end::Desc-->
+									</div>
+									<!--end::Stats-->
+								</div>
+								<!--end::Items-->
+								<!--end::Row-->
+								<!--end::Stats-->
+							</div>
+							<!--end::Body-->
+						</div>
+					</div>
+				</div>
+
+				<div class="row row-cols-1 row-cols-lg-3 mb-5 d-none">
+					<div class="col rounded-3">
+						<TVMiniChart
+							:options="{
+								width: '100%',
+								height: 200,
+								colorTheme: 'dark',
+								symbol: 'FX:EURUSD',
+								locale: 'en',
+								dateRange: '12M',
+								isTransparent: false,
+								autosize: false,
+								largeChartUrl: '',
+							}"
+						/>
+					</div>
+					<div class="col rounded-3">
+						<TVSingleTicker
+							:options="{
+								colorTheme: 'dark',
+								symbol: 'FX:USDJPY',
+								width: '100%',
+								hight: 1300,
+								isTransparent: false,
+								locale: 'en',
+							}"
+						/>
+					</div>
+				</div>
+
+				<div class="mb-5">
+					<TVScreener
+						:options="{
+							width: '100%',
+							height: 450,
+							colorTheme: 'dark',
+							defaultColumn: 'overview',
+							defaultScreen: 'general',
+							market: 'forex',
+							showToolbar: true,
+							locale: 'en',
+						}"
+					/>
+				</div>
+
 				<!-- SEAMLESS TRANSACTIONS -->
-				<div class="card card-flush h-xl-100 mb-5">
+				<div
+					class="card bg-transparent border-0 card-flush h-xl-100 mb-15"
+				>
 					<!--begin::Body-->
-					<div class="card-body py-9">
+					<div class="card-body p-0">
 						<!--begin::Row-->
 						<div class="row gx-9 h-100">
 							<!--begin::Col-->
@@ -316,7 +314,7 @@
 									<div
 										class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-200px h-100"
 										style="
-											background-image: url('https://t3.ftcdn.net/jpg/03/30/78/08/240_F_330780882_gUmEzkzPLQebQJclnvXxa0Bt1qE83acZ.jpg');
+											background-image: url('/assets/media/fx/speculative-g5de239cb3_1920-1609745559.jpg');
 										"
 									></div>
 									<!--end::Image-->
@@ -342,18 +340,15 @@
 									<!--begin::Header-->
 									<div class="mb-0">
 										<!--begin::Title-->
-										<div class="text-centeri mb-7 mb-lg-10">
-											<i
-												class="ki-duotone d-md-none ki-send text-success fs-2 order-1o me-2"
-											>
-												<span class="path1"></span>
-												<span class="path2"></span>
-											</i>
-											<a
+										<div
+											class="text-centeri mb-7 mb-lg-10 d-flex"
+										>
+											<h1
 												role="button"
-												class="text-gray-800 text-hover-primary fs-3 fs-md-2x fw-bold"
-												>Seamless Transactions</a
+												class="text-gray-800 text-hover-primary display-6 fw-bold"
 											>
+												Seamless Transactions
+											</h1>
 										</div>
 										<!--end::Title-->
 									</div>
@@ -375,10 +370,9 @@
 												your transactions are smooth and
 												effortless. With our intuitive
 												interface and streamlined
-												processes, sending money, paying
-												bills, and managing your
-												finances is quick and
-												easy.4</span
+												processes, trading and managing
+												your trades is quick and
+												easy.</span
 											>
 										</div>
 									</div>
@@ -394,15 +388,15 @@
 
 				<!-- Robost security -->
 
-				<div class="card card-flush h-xl-100 mb-5">
+				<div
+					class="card bg-transparent border-0 card-flush h-xl-100 mb-5"
+				>
 					<!--begin::Body-->
-					<div class="card-body py-9">
+					<div class="card-body p-0">
 						<!--begin::Row-->
-						<div class="row gx-9 h-100">
+						<div class="row g-9 h-100">
 							<!--begin::Col-->
-							<div
-								class="col-sm-6 mb-10 mb-sm-0 order-1 order-lg-2"
-							>
+							<div class="col-12 col-sm-6 order-1 order-lg-2">
 								<!--begin::Overlay-->
 								<a class="d-block overlay h-100" role="button">
 									<!--begin::Image-->
@@ -428,7 +422,7 @@
 
 							<!--begin::Col-->
 							<div
-								class="col-sm-6 card border-0 order-2 order-lg-1"
+								class="col-12 col-sm-6 card border-0 order-2 order-lg-1"
 							>
 								<!--begin::Wrapper-->
 								<div
@@ -466,7 +460,7 @@
 										<div>
 											<span
 												class="fw-bold text-gray-600i fs-4 pb-5"
-												>our security is our top
+												>Our security is our top
 												priority.
 												{{ CONFIG.APP }} employs
 												state-of-the-art encryption
@@ -507,7 +501,7 @@
 									<div
 										class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-200px h-100"
 										style="
-											background-image: url('/assets/media/banking/pl-img.png');
+											background-image: url('/assets/media/fx/forex-01-1156455991.jpg');
 										"
 									></div>
 									<!--end::Image-->
@@ -543,7 +537,7 @@
 											<a
 												role="button"
 												class="text-gray-800 text-hover-primary fs-3 fs-md-2x fw-bold"
-												>Hassle-Free Banking
+												>Hassle-Free Trading
 											</a>
 										</div>
 										<!--end::Title-->
@@ -566,10 +560,9 @@
 												your transactions are smooth and
 												effortless. With our intuitive
 												interface and streamlined
-												processes, sending money, paying
-												bills, and managing your
-												finances is quick and
-												easy.4</span
+												processes, trading and managing
+												your trades is quick and
+												easy.</span
 											>
 										</div>
 									</div>

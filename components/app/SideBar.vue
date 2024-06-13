@@ -39,13 +39,7 @@
 			bis_skin_checked="1"
 		>
 			<!--begin::Logo image-->
-			<a href="">
-				<img
-					alt="Logo"
-					src="/assets/media/logos/default-small.svg"
-					class="h-35px"
-				/>
-			</a>
+			<NFTexLogoMini :classes="'h-50px'" />
 			<!--end::Logo image-->
 		</div>
 		<!--end::Logo-->
