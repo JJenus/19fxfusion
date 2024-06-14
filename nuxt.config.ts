@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 	tradingview: {
 		prefix: "TV",
 	},
-	devtools: { enabled: false },
+	devtools: { enabled: true },
 	ssr: true,
 	routeRules: {
 		// "/": { redirect: "/about-us" },
@@ -23,9 +23,9 @@ export default defineNuxtConfig({
 		},
 	},
 	runtimeConfig: {
-		BE_API: process.env.BE_API || "https://paycifik.alwaysdata.net/api",
+		BE_API: process.env.BE_API || "https://19fxfussion.alwaysdata.net",
 		public: {
-			BE_API: process.env.BE_API || "https://paycifik.alwaysdata.net/api",
+			BE_API: process.env.BE_API || "https://19fxfussion.alwaysdata.net",
 			APP: "19Fx",
 			MOBILE: "+1 (228) 888-8515",
 			CLOUD_NAME: "dpangnog4",

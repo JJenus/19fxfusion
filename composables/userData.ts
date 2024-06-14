@@ -136,25 +136,23 @@ export const userData = () => {
 			},
 		};
 
-		// axios
-		// 	.request(axiosConfig)
-		// 	.then((response: AxiosResponse<INotification[], any>) => {
-		// 		notifications.value = response.data.sort(
-		// 			(a, b) =>
-		// 				new Date(b.createdAt).getTime() -
-		// 				new Date(a.createdAt).getTime()
-		// 		);
+		axios
+			.request(axiosConfig)
+			.then((response: AxiosResponse<INotification[], any>) => {
+				notifications.value = response.data.sort(
+					(a, b) =>
+						new Date(b.createdAt).getTime() -
+						new Date(a.createdAt).getTime()
+				);
 
-		// 		notifications.value.forEach((notice) => {
-		// 			if (notice.status === NotificationStatus.UNREAD) {
-		// 				newNotification.value = true;
-		// 			}
-		// 		});
-		// 		// console.log(data);
-		// 	})
-		// 	.catch((error) => {
-		// 		// console.log(error);
-		// 	});
+				const unreadNotification = notifications.value.find(
+					(notice) => notice.status === NotificationStatus.UNREAD
+				);
+				newNotification.value = !!unreadNotification; // Set to true if an unread notification is found, otherwise false
+			})
+			.catch((error) => {
+				// console.log(error);
+			});
 	};
 
 	const showNotifications = () => {
@@ -170,26 +168,6 @@ export const userData = () => {
 				Authorization: "Bearer " + useAuth().userData.value?.token,
 			},
 		};
-
-		// axios
-		// 	.request(axiosConfig)
-		// 	.then((response: AxiosResponse<INotification[], any>) => {
-		// 		notifications.value = response.data.sort(
-		// 			(a, b) =>
-		// 				new Date(b.createdAt).getTime() -
-		// 				new Date(a.createdAt).getTime()
-		// 		);
-
-		// 		notifications.value.forEach((notice) => {
-		// 			if (notice.status === NotificationStatus.UNREAD) {
-		// 				newNotification.value = true;
-		// 			}
-		// 		});
-		// 		// console.log(data);
-		// 	})
-		// 	.catch((error) => {
-		// 		console.log(error);
-		// 	});
 	};
 
 	return {

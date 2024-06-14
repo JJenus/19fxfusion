@@ -25,7 +25,7 @@ export const useAuth = () => {
 		authenticated.value = true;
 
 		// redirect to appropriate account
-		if (auth.user.userType === "admin") {
+		if (auth.user.userRole === "admin") {
 			// navigateTo("/admin");
 			window.location.href = "/admin"
 		} else {

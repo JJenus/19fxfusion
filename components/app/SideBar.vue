@@ -89,7 +89,7 @@
 						</span>
 						<!--end:Menu link--><!--begin:Menu sub-->
 						<div
-							class="menu-sub menu-sub-dropdown px-2 py-4 w-250px mh-75 overflow-auto d-none d-lg-auto"
+							class="menu-sub menu-sub-dropdown px-2 py-4 w-250px mh-75 overflow-auto d-none"
 							bis_skin_checked="1"
 						>
 							<!--begin:Menu item-->

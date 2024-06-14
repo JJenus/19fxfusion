@@ -134,13 +134,13 @@
 			.then((response: AxiosResponse<AuthToken, any>) => {
 				console.log("Response", response.data);
 				const authUser = response.data.user;
-				if (authUser.verified || authUser.userType === "admin") {
-					closeModalBtn.value.click();
-					auth.login(response.data);
-				} else {
-					infoAlert("Account not verified!");
-				}
-				// successAlert("Welcome!");
+				// if (authUser.verified || authUser.userType === "admin") {
+				// 	closeModalBtn.value.click();
+				// 	auth.login(response.data);
+				// } else {
+				// 	infoAlert("Account not verified!");
+				// }
+				auth.login(response.data);
 			})
 			.catch((error): void => {
 				const errRes = error.response;

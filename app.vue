@@ -9,15 +9,6 @@
 	if (process.client) {
 		// Chatra("init", config);
 	}
-	// useHead({
-	// 	script: [
-	// 		{
-	// 			innerHTML: 'alert("xss")',
-	// 			src: "https://call.chatra.io/chatra.js",
-	// 			async: true,
-	// 		},
-	// 	],
-	// });
 </script>
 
 <template>

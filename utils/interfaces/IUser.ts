@@ -13,7 +13,7 @@ export interface IUser {
 	dob: string | undefined;
 	verified: boolean;
 	emailVerified: boolean;
-	userType: string;
+	userRole: string;
 	account: Account;
 	createdAt: string;
 }
