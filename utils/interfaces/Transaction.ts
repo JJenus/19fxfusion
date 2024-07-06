@@ -1,18 +1,26 @@
 import { Beneficiary } from "./Beneficiary";
+import { IUser } from "./IUser";
 
 export interface Transaction  {
-	id: string | null | undefined,
-	senderId: string,
-	receiverId: string | undefined,
-	amount: number,
-	type: TransactionTypes,
-	notes: string | undefined,
-	beneficiary: Beneficiary,
+	id?: number;  // Optional because it's generated
+    amount: string;
+    status: TransactionStatus;
+    transactionType: TransactionType;
+    user: IUser;
+    transactionId: string;
+    transactionRef: string;
+    createdAt?: string;  // Optional because it's generated
+    updatedAt?: string;  // Optional because it's generated
 }
 
-export enum TransactionTypes {
-	DEBIT = "debit",
-	CREDIT = "credit",
-	WITHDRAWAL = "withdrawal",
-	SEND = "send"
+export enum TransactionStatus {
+    PROCESSING = 'PROCESSING',
+    COMPLETED = 'COMPLETED',
+    FAILED = 'FAILED',
+    PENDING = 'PENDING',
+}
+
+export enum TransactionType {
+    DEPOSIT = 'DEPOSIT',
+    WITHDRAW = 'WITHDRAW',
 }

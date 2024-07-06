@@ -27,15 +27,15 @@ export const useAppSettings = () => {
 			},
 		};
 
-		axios
-			.request(axiosConfig)
-			.then((response) => {
-				obj.value = response.data;
-				// console.log(settings.value);
-			})
-			.catch((error): void => {
-				console.log(error);
-			});
+		// axios
+		// 	.request(axiosConfig)
+		// 	.then((response) => {
+		// 		obj.value = response.data;
+		// 		// console.log(settings.value);
+		// 	})
+		// 	.catch((error): void => {
+		// 		console.log(error);
+		// 	});
 	};
 
 	const setActiveNav = (active: string) => {

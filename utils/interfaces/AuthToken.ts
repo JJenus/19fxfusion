@@ -2,6 +2,6 @@ import { IUser } from "./IUser";
 
 export type AuthToken = {
 	userId: string;
-	user: any | IUser;
+	user: IUser;
 	token: string;
 };

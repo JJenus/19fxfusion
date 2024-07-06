@@ -1,10 +1,11 @@
 import { AuthToken } from "../utils/interfaces/AuthToken";
 
 export const useAuth = () => {
+	const AUTH_KEY:string = "auth-login"
 	const appUser = userData();
 	const authData = useState<AuthToken | null>("user", () => null);
 	const authenticated = useState<boolean>("isAuthenticated", () => false);
-	const userAuth = useCookie<AuthToken>("auth", {
+	const userAuth = useCookie<AuthToken | null>(AUTH_KEY, {
 		maxAge: 60 * 60 * 24,
 	});
 	const openAuth = useState<string>("authAction", () => "login");
@@ -16,10 +17,10 @@ export const useAuth = () => {
 	const login = (auth: AuthToken) => {
 		//store cookie
 		userAuth.value = auth;
+		console.log(auth);
 
 		//set essential values
 		appUser.data.value = auth.user;
-		appUser.account.value = auth.user.account;
 
 		authData.value = auth;
 		authenticated.value = true;
@@ -27,19 +28,19 @@ export const useAuth = () => {
 		// redirect to appropriate account
 		if (auth.user.userRole === "admin") {
 			// navigateTo("/admin");
-			window.location.href = "/admin"
+			window.location.href = "/admin";
 		} else {
-			window.location.href = "/app"
+			window.location.href = "/app";
 		}
 	};
 
 	const logout = () => {
 		authData.value = null;
 		authenticated.value = false;
-		// storage().remove();
-		useCookie("auth").value = null;
-		// navigateTo("/sign-in");
-		window.location.href = "/"
+		useCookie(AUTH_KEY, { maxAge: -1 });
+
+		userAuth.value = null;
+		window.location.href = "/";
 	};
 
 	const isAuthenticated = () => {
@@ -47,10 +48,9 @@ export const useAuth = () => {
 			return true;
 		}
 
-		const auth = useCookie<AuthToken | null>("auth");
+		const auth = useCookie<AuthToken>(AUTH_KEY);
 		// console.log(auth);
 		if (auth.value == null || auth.value == undefined) {
-			// console.log("Empty")
 			return false;
 		}
 
@@ -58,7 +58,6 @@ export const useAuth = () => {
 		authData.value = auth.value;
 
 		appUser.data.value = auth.value.user;
-		appUser.account.value = auth.value.user.account;
 
 		return true;
 	};

@@ -1,19 +1,21 @@
-import { Account } from "./Account";
+import { Trade } from "./Trade";
+import { Transaction } from "./Transaction";
 
 export interface IUser {
-	id: string;
-	name: string;
-	email: string;
-	phone: string;
-	imgUrl: string;
-	idUrl: string | null | undefined;
-	address: string;
-	city: string;
-	country: string;
-	dob: string | undefined;
-	verified: boolean;
-	emailVerified: boolean;
-	userRole: string;
-	account: Account;
-	createdAt: string;
+    id?: number;  // Optional because it's generated
+    name: string;
+    email: string;
+    ethAddress: string;
+    emailVerified: boolean;
+    accountVerified: boolean;
+    secret?: string;  // Optional because it's not always set
+    password?: string;  // Optional because it's sensitive and might not be needed in all cases
+    balance: string;
+    status: string;
+    imgUrl: string;
+    userRole: string;
+    trades?: Trade[];  // Optional because it's a list that might not always be populated
+    transactions?: Transaction[];  // Optional because it's a list that might not always be populated
+    createdAt?: string;  // Optional because it's generated
+    updatedAt?: string;  // Optional because it's generated
 }

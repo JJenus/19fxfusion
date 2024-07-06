@@ -1,10 +1,10 @@
 <script setup>
 	import currency from "currency.js";
 
-	const balance = userData().account;
+	const balance = userData().data.value.balance;
 
 	const getBalance = () => {
-		let cAmount = balance.value.amount || 0;
+		let cAmount = balance || 0;
 
 		const amount = currency(cAmount, {
 			symbol: "",
@@ -13,9 +13,7 @@
 	};
 
 	onBeforeMount(() => {
-		if (!balance.value.amount) {
-			userData().fetchBalance();
-		}
+		
 	});
 </script>
 

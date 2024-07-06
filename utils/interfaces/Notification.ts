@@ -1,22 +1,19 @@
 export enum NotificationStatus {
-	READ = "read",
-	UNREAD = "unread",
+	READ = "READ",
+	UNREAD = "UNREAD",
 }
 
-export enum NotificationType {
-	DEBIT = "credit",
-	CREDIT = "debit",
-	ACCOUNT_UPDATE = "account update",
-	FAILED = "failed",
-	INFO = "info",
+export enum Priority {
+	NORMAL = "NORMAL",
+	IMPORTANT = "IMPORTANT",
 }
 
 export interface INotification {
-	id: string | null;
-	userId: string;
+	id?: number; // Optional because it's generated
+	userId: number;
+	message: string;
 	title: string;
 	status: NotificationStatus;
-	message: string;
-	type: NotificationType;
-	createdAt: string;
+	priority: Priority;
+	createdAt?: string; // Optional because it's generated
 }

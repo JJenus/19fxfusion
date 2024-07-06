@@ -27,7 +27,7 @@ export default defineNuxtConfig({
 		public: {
 			BE_API: process.env.BE_API || "https://19fxfussion.alwaysdata.net",
 			APP: "19Fx",
-			MOBILE: "+1 (228) 888-8515",
+			MOBILE: "+49 (178) 793 1942",
 			CLOUD_NAME: "dpangnog4",
 			CLOUD_KEY: "232136269489291",
 			CLOUD_SECRETE: "B3_WYvhc4C_MSW6RCW-r-O-tiD4",
@@ -63,7 +63,7 @@ export default defineNuxtConfig({
 				},
 				{
 					name: "twitter:image",
-					content: "/assets/media/logos/paycifik.png",
+					content: "/assets/media/logos/19logo.png",
 				},
 				{
 					property: "og:title",
@@ -76,7 +76,7 @@ export default defineNuxtConfig({
 				},
 				{
 					property: "og:image",
-					content: "/assets/media/logos/paycifik.png",
+					content: "/assets/media/logos/19logo.png",
 				},
 				{
 					property: "og:url",

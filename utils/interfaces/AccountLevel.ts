@@ -1,5 +1,5 @@
 export type AccountLevel = {
-	id: string | undefined | null;
+	id?: string | undefined | null;
 	title: string;
 	dailyLimit: number;
 	maxBalanceLimit: number;

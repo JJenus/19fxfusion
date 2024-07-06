@@ -7,47 +7,24 @@ import {
 } from "../utils/interfaces/Notification";
 
 export const userData = () => {
-	const initAcc: Account = {
-		id: "",
-		userId: "",
-		currencyId: "",
-		amount: null,
-		status: AccountStatus.ACTIVE,
-		accountLevel: 0,
-		accountNumber: 0,
-	};
+	
 
 	const initUser: IUser = {
-		id: "",
 		name: "",
 		email: "",
-		imgUrl: "/assets/media/svg/avatars/blank.svg",
-		phone: "",
-		address: "",
-		city: "",
-		country: "",
-		dob: "",
-		verified: false,
+		ethAddress: "",
 		emailVerified: false,
-		account: {
-			id: "",
-			userId: "",
-			currencyId: "",
-			amount: 0,
-			status: AccountStatus.ACTIVE,
-			accountLevel: 0,
-			accountNumber: 0,
-		},
-		userType: "",
-		createdAt: "",
-		idUrl: undefined,
-	};
+		accountVerified: false,
+		balance: "",
+		status: "",
+		imgUrl: "/assets/media/svg/avatars/blank.svg",
+		userRole: ""
+	}
 
 	const transactions = useState<any[]>("user-transactions", () => []);
 	const notifications = useState<INotification[]>("notifications", () => []);
 	const newNotification = useState<boolean>("new-notifications", () => false);
 	const data = useState<IUser>("userData", () => initUser);
-	const account = useState<Account>("userAccount", () => initAcc);
 	const users = useState<IUser[]>("users", () => []);
 	const active = useState<IUser | null>("active-user");
 	const admins = useState<IUser[]>("admin", () => []);
@@ -70,22 +47,22 @@ export const userData = () => {
 			.then((response: AxiosResponse<IUser[], any>) => {
 				users.value = response.data
 					.filter((e) => {
-						return e.userType !== "admin";
+						return e.userRole !== "admin";
 					})
 					.sort(
 						(a, b) =>
-							new Date(b.createdAt).getTime() -
-							new Date(a.createdAt).getTime()
+							new Date(b.createdAt!).getTime() -
+							new Date(a.createdAt!).getTime()
 					);
 
 				admins.value = response.data
 					.filter((e) => {
-						return e.userType === "admin";
+						return e.userRole === "admin";
 					})
 					.sort(
 						(a, b) =>
-							new Date(b.createdAt).getTime() -
-							new Date(a.createdAt).getTime()
+							new Date(b.createdAt!).getTime() -
+							new Date(a.createdAt!).getTime()
 					);
 
 				// console.log(users.value);
@@ -99,28 +76,6 @@ export const userData = () => {
 				) {
 					// console.log("Access denied");
 				}
-			});
-	};
-
-	const fetchBalance = () => {
-		const axiosConfig = {
-			method: "get",
-			url: `${useRuntimeConfig().public.BE_API}/account/${data.value.id}`,
-			timeout: 15000,
-			headers: {
-				Authorization: "Bearer " + useAuth().userData.value?.token,
-			},
-		};
-
-		axios
-			.request(axiosConfig)
-			.then((response) => {
-				const data = response.data;
-				account.value = data;
-				// console.log(data);
-			})
-			.catch((error) => {
-				// console.log(error);
 			});
 	};
 
@@ -141,8 +96,8 @@ export const userData = () => {
 			.then((response: AxiosResponse<INotification[], any>) => {
 				notifications.value = response.data.sort(
 					(a, b) =>
-						new Date(b.createdAt).getTime() -
-						new Date(a.createdAt).getTime()
+						new Date(b.createdAt!).getTime() -
+						new Date(a.createdAt!).getTime()
 				);
 
 				const unreadNotification = notifications.value.find(
@@ -171,7 +126,6 @@ export const userData = () => {
 	};
 
 	return {
-		account,
 		data,
 		users,
 		admins,
@@ -180,7 +134,6 @@ export const userData = () => {
 		newNotification,
 		transactions,
 		getUsers,
-		fetchBalance,
 		getNotifications,
 		showNotifications,
 	};
