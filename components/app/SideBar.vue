@@ -19,7 +19,6 @@
 </script>
 
 <template>
-	<!--begin::Sidebar-->
 	<div
 		id="kt_app_sidebar"
 		class="app-sidebar flex-column"
@@ -129,5 +128,4 @@
 		</div>
 		<!--end::Footer-->
 	</div>
-	<!--end::Sidebar-->
 </template>

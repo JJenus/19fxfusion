@@ -8,7 +8,7 @@
 	};
 
 	// Create the chart
-	if (process.client) {
+	if (process.client && useAuth().isAuthenticated()) {
 		const ws = useWebsocket();
 		ws.connect();
 

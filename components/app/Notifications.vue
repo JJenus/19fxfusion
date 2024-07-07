@@ -1,4 +1,4 @@
-<script setup>
+<script setup >
 	userData().getNotifications();
 	const notifications = userData().notifications;
 	let targetElement;

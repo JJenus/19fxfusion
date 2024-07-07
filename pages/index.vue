@@ -256,7 +256,7 @@
 
 				<div class="row row-cols-1 row-cols-lg-3 mb-5 d-none">
 					<div class="col rounded-3">
-						<TVMiniChart
+						<!-- <TVMiniChart
 							:options="{
 								width: '100%',
 								height: 200,
@@ -268,10 +268,10 @@
 								autosize: false,
 								largeChartUrl: '',
 							}"
-						/>
+						/> -->
 					</div>
 					<div class="col rounded-3">
-						<TVSingleTicker
+						<!-- <TVSingleTicker
 							:options="{
 								colorTheme: 'dark',
 								symbol: 'FX:USDJPY',
@@ -280,7 +280,7 @@
 								isTransparent: false,
 								locale: 'en',
 							}"
-						/>
+						/> -->
 					</div>
 				</div>
 

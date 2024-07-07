@@ -3,11 +3,9 @@
 </script>
 
 <template>
-	<!--begin::Footer container-->
-	<!-- -->
 	<div
 		style="border-radius: 0"
-		class="app-containeri container-fluidi fs-5 pt-10 mt-10 py-3 "
+		class="app-containeri container-fluidi fs-5 pt-10 mt-10 py-3"
 	>
 		<div class="card bg-body border-0 w-100 m-0 p-0 rounded-0">
 			<div class="card-body mx-0">
@@ -106,5 +104,4 @@
 			</div>
 		</div>
 	</div>
-	<!--end::Footer container-->
 </template>

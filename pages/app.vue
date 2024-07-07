@@ -1,7 +1,6 @@
 <script setup lang="ts">
 	import { IUser } from "utils/interfaces/IUser";
 	import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-	import { AuthToken } from "utils/interfaces/AuthToken";
 
 	definePageMeta({
 		layout: "app",
@@ -11,14 +10,16 @@
 		title: `App - ${useRuntimeConfig().public.APP}`,
 	});
 
+	const auth = useAuth();
+
 	const loaded = useCookie<boolean>("reload", { maxAge: 60 * 60 * 24 });
 
-	if (process.client) {
-		if (!loaded.value) {
-			window.location.reload();
-			loaded.value = true;
-		}
-	}
+	// if (process.client) {
+	// 	if (!loaded.value) {
+	// 		window.location.reload();
+	// 		loaded.value = true;
+	// 	}
+	// }
 
 	const appConfig = useRuntimeConfig();
 
@@ -26,7 +27,8 @@
 	const data = userData().data;
 
 	const getUserData = () => {
-		if (!useAuth().userData.value) {
+		if (!auth.userData.value) {
+			console.log(auth.userData.value)
 			useAuth().logout();
 			infoAlert("Session expired, please login.");
 		}
@@ -61,13 +63,7 @@
 			});
 	};
 
-	onBeforeMount(() => {
-		const cookie = useAuth().userAuth;
-		if (cookie.value === null || cookie.value === undefined) {
-			console.log(cookie.value)
-			infoAlert("Session expired");
-			return useAuth().logout();
-		}
+	onMounted(() => {
 		getUserData();
 	});
 </script>

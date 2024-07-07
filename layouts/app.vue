@@ -8,7 +8,6 @@
 
 	useAppSettings().setActiveNav(path);
 
-	const appConfig = useRuntimeConfig();
 	const newNotification = userData().newNotification;
 </script>
 

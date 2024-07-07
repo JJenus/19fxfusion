@@ -6,7 +6,6 @@
 </script>
 
 <template>
-	<!-- To be used as send money/add modal -->
 	<div
 		class="modal fade"
 		id="kt_modal_upgrade_plan"
@@ -320,5 +319,4 @@
 		</div>
 		<!--end::Modal dialog-->
 	</div>
-	<!--end::Modal - Upgrade plan-->
 </template>

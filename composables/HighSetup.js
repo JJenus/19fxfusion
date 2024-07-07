@@ -137,12 +137,14 @@ export const useHighSetup = () => {
 						const newPoint = getNewPoint(i, data);
 						const lastPoint = data[data.length - 1];
 
-						if (lastPoint[0] !== newPoint[0]) {
-							series.addPoint(newPoint);
-						} else {
-							series.options.data[data.length - 1] = newPoint;
-							series.setData(data);
-						}
+						try {
+							if (lastPoint[0] !== newPoint[0]) {
+								series.addPoint(newPoint);
+							} else {
+								series.options.data[data.length - 1] = newPoint;
+								series.setData(data);
+							}
+						} catch (er) {}
 						i++;
 					}, 10);
 				},

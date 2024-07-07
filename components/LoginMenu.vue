@@ -38,12 +38,6 @@
 		password: "",
 	});
 
-	const authToken: AuthToken = {
-		userId: "",
-		user: "",
-		token: "",
-	};
-
 	const authAction = useState<string>("authAction", () => "login");
 	const loginButton = ref();
 	const regButton = ref();

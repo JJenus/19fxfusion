@@ -1,9 +1,9 @@
 import { AuthToken } from "../utils/interfaces/AuthToken";
 
 export const useAuth = () => {
-	const AUTH_KEY:string = "auth-login"
+	const AUTH_KEY: string = "auth-login";
 	const appUser = userData();
-	const authData = useState<AuthToken | null>("user", () => null);
+	const authUserData = useState<AuthToken | null>("user", () => null);
 	const authenticated = useState<boolean>("isAuthenticated", () => false);
 	const userAuth = useCookie<AuthToken | null>(AUTH_KEY, {
 		maxAge: 60 * 60 * 24,
@@ -17,12 +17,12 @@ export const useAuth = () => {
 	const login = (auth: AuthToken) => {
 		//store cookie
 		userAuth.value = auth;
-		console.log(auth);
+		console.log(userAuth.value);
 
 		//set essential values
 		appUser.data.value = auth.user;
 
-		authData.value = auth;
+		authUserData.value = auth;
 		authenticated.value = true;
 
 		// redirect to appropriate account
@@ -35,7 +35,8 @@ export const useAuth = () => {
 	};
 
 	const logout = () => {
-		authData.value = null;
+		useWebsocket().disconnect();
+		authUserData.value = null;
 		authenticated.value = false;
 		useCookie(AUTH_KEY, { maxAge: -1 });
 
@@ -55,7 +56,7 @@ export const useAuth = () => {
 		}
 
 		authenticated.value = true;
-		authData.value = auth.value;
+		authUserData.value = auth.value;
 
 		appUser.data.value = auth.value.user;
 
@@ -64,7 +65,7 @@ export const useAuth = () => {
 
 	return {
 		isAuthenticated,
-		userData: authData,
+		userData: authUserData,
 		logout,
 		login,
 		openAuthModal,

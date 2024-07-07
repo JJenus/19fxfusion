@@ -4,7 +4,6 @@
 	const config = useRuntimeConfig().public;
 </script>
 <template>
-	<!--begin::Wrapper-->
 	<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
 		<!--begin::Sidebar-->
 		<div
@@ -49,7 +48,7 @@
 						data-kt-menu-expand="false"
 					>
 						<!--begin:Menu item-->
-						<a  href="/app" class="menu-item menu-accordion">
+						<a href="/app" class="menu-item menu-accordion">
 							<!--begin:Menu link--><span class="menu-link"
 								><span class="menu-icon">
 									<i class="ki-solid fs-2 ki-user"> </i>
@@ -199,5 +198,4 @@
 		</div>
 		<!--end::Sidebar-->
 	</div>
-	<!--end::Wrapper-->
 </template>
