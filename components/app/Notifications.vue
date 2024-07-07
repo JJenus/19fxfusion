@@ -1,8 +1,9 @@
-<script setup >
+<script setup>
 	userData().getNotifications();
 	const notifications = userData().notifications;
 	let targetElement;
 	let container;
+
 	const notification = ref({
 		title: "",
 		status: "READ",
@@ -19,7 +20,9 @@
 		const toastBody = newToast.querySelector(".toast-body");
 
 		toastTitle.textContent = notification.value.title; // Update the title
-		toastTime.textContent = notification.value.createdAt; // Update the time
+		toastTime.textContent = useAppSettings().time(
+			notification.value.createdAt
+		); // Update the time
 		toastBody.textContent = notification.value.message; // Update the body
 		container.append(newToast);
 		const toast = bootstrap.Toast.getOrCreateInstance(newToast);
@@ -37,7 +40,9 @@
 
 		watch(ws.newNotification, (newNotification, oldPoint) => {
 			notification.value = newNotification;
-			console.log("NEW POINT", newNotification);
+			notifications.value.push(newNotification);
+			
+			userData().newNotification.value = true;
 			showToast();
 		});
 	}
@@ -46,11 +51,11 @@
 </script>
 
 <template>
-	<div>
+	<div class="" style="z-index: 30000">
 		<!--begin::Toast-->
 		<div
 			id="kt_docs_toast_stack_container"
-			class="toast-container position-fixed top-0 end-0 p-3 z-index-3"
+			class="mt-18 mt-lg-0 toast-container position-fixed top-0 end-0 p-3"
 		>
 			<div
 				class="toast"
@@ -60,10 +65,14 @@
 				data-kt-docs-toast="stack"
 			>
 				<div class="toast-header">
-					<i class="ki-duotone ki-abstract-23 fs-2 text-success me-3"
-						><span class="path1"></span><span class="path2"></span
-					></i>
-					<strong class="me-auto">Keenthemes</strong>
+					<i
+						class="ki-solid ki-notification-bing fs-2 text-info me-3"
+					>
+					</i>
+
+					<strong class="me-auto mw-200px text-truncate pe-3"
+						>title</strong
+					>
 					<small>11 mins ago</small>
 					<button
 						type="button"
@@ -72,9 +81,7 @@
 						aria-label="Close"
 					></button>
 				</div>
-				<div class="toast-body">
-					Hello, world! This is a toast message.
-				</div>
+				<div class="toast-body">message body</div>
 			</div>
 		</div>
 		<!--end::Toast-->

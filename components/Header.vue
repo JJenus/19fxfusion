@@ -8,13 +8,6 @@
 
 	const active = ref("all");
 
-	const amount = () => {
-		const a: any = user.value.account.amount;
-		return currency(a, {
-			symbol: "",
-		}).format();
-	};
-
 	const navs = [
 		{
 			name: "Home",

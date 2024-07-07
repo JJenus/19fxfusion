@@ -21,7 +21,7 @@ export const useWebsocket = () => {
 				"/topic/notifications",
 				function (notification) {
 					showNotification(notification.body);
-					newNotification.value = JSON.parse(message.body);
+					newNotification.value = JSON.parse(notification.body);
 				}
 			);
 
@@ -29,7 +29,7 @@ export const useWebsocket = () => {
 				stompClient.value.subscribe("/topic/fx", function (message) {
 					showNotification(message.body);
 					newPoint.value = JSON.parse(message.body);
-					newNotification.value = JSON.parse(message.body);
+					// newNotification.value = JSON.parse(message.body);
 				});
 
 				// Subscribe to user-specific notifications

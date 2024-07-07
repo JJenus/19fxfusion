@@ -67,7 +67,7 @@
 <template>
 	<div
 		id="kt_app_aside"
-		class="app-aside mobile-aside flex-column z-index-1d"
+		class="app-aside mobile-aside flex-column z-index-1d1e"
 		data-kt-drawer="true"
 		data-kt-drawer-name="app-aside"
 		data-kt-drawer-activate="{default: true, lg: false}"

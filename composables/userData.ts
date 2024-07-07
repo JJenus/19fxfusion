@@ -7,8 +7,6 @@ import {
 } from "../utils/interfaces/Notification";
 
 export const userData = () => {
-	
-
 	const initUser: IUser = {
 		name: "",
 		email: "",
@@ -18,8 +16,8 @@ export const userData = () => {
 		balance: "",
 		status: "",
 		imgUrl: "/assets/media/svg/avatars/blank.svg",
-		userRole: ""
-	}
+		userRole: "",
+	};
 
 	const transactions = useState<any[]>("user-transactions", () => []);
 	const notifications = useState<INotification[]>("notifications", () => []);
@@ -114,15 +112,37 @@ export const userData = () => {
 		if (!newNotification.value) {
 			return;
 		}
+		newNotification.value = false;
+
+		const unread = notifications.value.filter((e) => () => {
+			if (e.status === NotificationStatus.UNREAD) {
+				e.status = NotificationStatus.READ;
+				return true;
+			}
+			return false;
+		});
+
 		const axiosConfig = {
 			method: "put",
-			data: notifications.value,
-			url: `${useRuntimeConfig().public.BE_API}/notifications/all`,
+			data: unread,
+			url: `${useRuntimeConfig().public.BE_API}/notifications/read/all`,
 			timeout: 25000,
 			headers: {
 				Authorization: "Bearer " + useAuth().userData.value?.token,
 			},
 		};
+
+		axios
+			.request(axiosConfig)
+			.then((response: AxiosResponse<INotification[], any>) => {
+				setTimeout(() => {
+					notifications.value = response.data;
+				}, 3000);
+			})
+			.catch((error) => {
+				console.log(error);
+				const data = error.response.data;
+			});
 	};
 
 	return {
