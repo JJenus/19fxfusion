@@ -59,7 +59,6 @@
 		const candleData = [
 			{ time: "2023-01-01", open: 100, high: 110, low: 90, close: 105 },
 			{ time: "2023-01-02", open: 106, high: 120, low: 101, close: 115 },
-			// ... (more data points)
 		];
 
 		const lineData = candleData.map((d) => ({

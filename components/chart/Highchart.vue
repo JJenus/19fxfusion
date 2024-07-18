@@ -4,7 +4,6 @@
 
 	const switchMode = () => {
 		isDarkMode.value = !isDarkMode.value;
-		console.log("Themes", Highcharts.getOptions().themes);
 	};
 
 	// Create the chart
@@ -49,9 +48,6 @@
 </script>
 <template>
 	<div class="rounded overflow-hidden">
-		<button @click="switchMode()" class="btn btn-primary d-none m-n4">
-			Swi
-		</button>
 		<div id="container"></div>
 	</div>
 </template>

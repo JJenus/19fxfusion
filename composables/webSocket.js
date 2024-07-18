@@ -3,7 +3,16 @@
 export const useWebsocket = () => {
 	const CONFIG = useRuntimeConfig().public;
 	const stompClient = useState("stomp-client", () => {});
-	const newPoint = useState("fx-live", () => {});
+	const newPoint = useState("fx-live", () => ({
+		volume: 0,
+		volumeWeighted: 0,
+		open: 0,
+		close: 0,
+		high: 0,
+		low: 0,
+		timestamp: 0,
+		transactions: 0,
+	}));
 	const newBalance = useState("live-balance", () => "");
 	const newNotification = useState("live-notification", () => {});
 	const newTransaction = useState("live-transaction", () => {});
@@ -29,7 +38,7 @@ export const useWebsocket = () => {
 				stompClient.value.subscribe("/topic/fx", function (message) {
 					showNotification(message.body);
 					newPoint.value = JSON.parse(message.body);
-					// newNotification.value = JSON.parse(message.body);
+					console.log(newPoint.value);
 				});
 
 				// Subscribe to user-specific notifications

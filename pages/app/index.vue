@@ -1,10 +1,35 @@
 <script setup lang="ts">
+	import currency from "currency.js";
+
+	const fxApp = useFxApp();
 
 	const user = userData().data;
-	const disabled = ref({
-		sl: false,
-		tp: false,
-	});
+	const disabled = fxApp.pnLAction;
+
+	enum LotA {
+		ADD,
+		SUB,
+	}
+
+	const slAction = (action: LotA) => {
+		const newLot =
+			action === LotA.ADD
+				? disabled.value.slTp.sl + 0.05
+				: disabled.value.slTp.sl - 0.05;
+		disabled.value.slTp.sl = currency(
+			currency(newLot).format({ symbol: "", precision: 5 })
+		).value;
+	};
+
+	const tpAction = (action: LotA) => {
+		const newLot =
+			action === LotA.ADD
+				? disabled.value.slTp.tp + 0.05
+				: disabled.value.slTp.tp - 0.05;
+		disabled.value.slTp.tp = currency(
+			currency(newLot).format({ symbol: "", precision: 5 })
+		).value;
+	};
 </script>
 
 <template>
@@ -32,7 +57,9 @@
 						>
 							<span
 								:class="
-									!disabled.sl ? 'text-muted' : 'text-danger'
+									!disabled.status.sl
+										? 'text-muted'
+										: 'text-danger'
 								"
 								class="fw-bold"
 								>Stop Loss</span
@@ -42,7 +69,7 @@
 								class="form-check form-switch form-check-custom form-check-solid"
 							>
 								<input
-									v-model="disabled.sl"
+									v-model="disabled.status.sl"
 									class="form-check-input h-15px w-30px"
 									type="checkbox"
 								/>
@@ -50,7 +77,8 @@
 						</div>
 						<div class="position-relative my-1">
 							<button
-								:disabled="!disabled.sl"
+								:disabled="!disabled.status.sl"
+								@click="slAction(LotA.SUB)"
 								type="button"
 								class="btn p-0 btn-active-icon-primary btn-sm position-absolute top-50 translate-middle-y ms-4"
 							>
@@ -58,14 +86,15 @@
 							</button>
 
 							<input
-								:disabled="!disabled.sl"
+								:disabled="!disabled.status.sl"
+								:value="disabled.slTp.sl"
 								type="text"
 								class="form-control text-center w-150px fs-7 px-12"
-								placeholder="1.849"
 							/>
 
 							<button
-								:disabled="!disabled.sl"
+								:disabled="!disabled.status.sl"
+								@click="slAction(LotA.ADD)"
 								type="button"
 								class="btn p-0 btn-active-icon-primary btn-sm position-absolute end-0 top-50 translate-middle-y me-3"
 							>
@@ -84,7 +113,9 @@
 						>
 							<span
 								:class="
-									!disabled.tp ? 'text-muted' : 'text-success'
+									!disabled.status.tp
+										? 'text-muted'
+										: 'text-success'
 								"
 								class="fw-bold"
 								>Take profit</span
@@ -94,7 +125,7 @@
 								class="form-check form-switch form-check-custom form-check-solid"
 							>
 								<input
-									v-model="disabled.tp"
+									v-model="disabled.status.tp"
 									class="form-check-input h-15px w-30px"
 									type="checkbox"
 								/>
@@ -102,7 +133,8 @@
 						</div>
 						<div class="position-relative my-1">
 							<button
-								:disabled="!disabled.tp"
+								:disabled="!disabled.status.tp"
+								@click="tpAction(LotA.SUB)"
 								type="button"
 								class="btn p-0 btn-active-icon-primary btn-sm position-absolute top-50 translate-middle-y ms-4"
 							>
@@ -110,14 +142,15 @@
 							</button>
 
 							<input
-								:disabled="!disabled.tp"
+								:disabled="!disabled.status.tp"
 								type="text"
 								class="form-control text-center w-150px fs-7 px-12"
-								placeholder="1.849"
+								:value="disabled.slTp.tp"
 							/>
 
 							<button
-								:disabled="!disabled.tp"
+								:disabled="!disabled.status.tp"
+								@click="tpAction(LotA.ADD)"
 								type="button"
 								class="btn p-0 btn-active-icon-primary btn-sm position-absolute end-0 top-50 translate-middle-y me-3"
 							>

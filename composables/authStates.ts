@@ -35,7 +35,10 @@ export const useAuth = () => {
 	};
 
 	const logout = () => {
-		useWebsocket().disconnect();
+		try {
+			useWebsocket().disconnect();
+		} catch (error) {}
+		
 		authUserData.value = null;
 		authenticated.value = false;
 		useCookie(AUTH_KEY, { maxAge: -1 });

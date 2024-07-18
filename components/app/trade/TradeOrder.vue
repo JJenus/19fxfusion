@@ -1,41 +1,148 @@
 <script setup lang="ts">
+	import { Trade, TradeStatus, TradeType } from "~/utils/interfaces/Trade";
+	import currency from "currency.js";
+
+	const ws = useWebsocket();
+	const user = userData().data;
 	const fxApp = useFxApp();
-	const trade = fxApp.currentTrade;
-	const placeTrade = () => {};
+	const trade = fxApp.currentMarket;
+
+	trade.value.close = ws.newPoint.value.close;
+	trade.value.high = ws.newPoint.value.high;
+	trade.value.low = ws.newPoint.value.low;
+	trade.value.volume = ws.newPoint.value.volume;
+	trade.value.timestamp = ws.newPoint.value.timestamp;
+	trade.value.volumeWeighted = ws.newPoint.value.volumeWeighted;
+	const buyLoader = ref(false);
+	const sellLoader = ref(false);
+	const countDown = ref(10);
+
+	const initTrade: Trade = {
+		user: user.value,
+		lots: 0,
+		tradeType: TradeType.LONG,
+		entryPrice: 0,
+		openTime: "",
+		profitLoss: 0,
+		status: TradeStatus.OPEN,
+	};
+
+	const placeTrade = ref(initTrade);
+
+	const lots = ref(0.02);
+
+	enum LotA {
+		ADD,
+		SUB,
+	}
+
+	const initTradeData = () => {
+		trade.value.close = ws.newPoint.value.close;
+		trade.value.high = ws.newPoint.value.high;
+		trade.value.low = ws.newPoint.value.low;
+		trade.value.volume = ws.newPoint.value.volume;
+		trade.value.timestamp = ws.newPoint.value.timestamp;
+		trade.value.volumeWeighted = ws.newPoint.value.volumeWeighted;
+	};
+
+	const lotBtn = (action: LotA) => {
+		const newLot =
+			action === LotA.ADD ? lots.value + 0.01 : lots.value - 0.01;
+		lots.value = Number(currency(newLot).format({ symbol: "" }));
+	};
+
+	const setTrade = () => {
+		placeTrade.value.lots = lots.value;
+	};
+
+	const buy = () => {
+		placeTrade.value.tradeType = TradeType.LONG;
+		placeTrade.value.entryPrice = trade.value.open;
+		setTrade();
+		if (fxApp.pnLAction.value.status.tp) {
+			placeTrade.value.takeProfitPrice = fxApp.pnLAction.value.slTp.tp;
+		}
+		fxApp.tradeAction("POST", placeTrade.value, "trade", buyLoader);
+	};
+
+	const sell = () => {
+		placeTrade.value.tradeType = TradeType.SHORT;
+		placeTrade.value.entryPrice = trade.value.close;
+		setTrade();
+		if (fxApp.pnLAction.value.status.sl) {
+			placeTrade.value.stopLossPrice = fxApp.pnLAction.value.slTp.sl;
+		}
+
+		fxApp.tradeAction("POST", placeTrade.value, "trade", sellLoader);
+	};
+
+	onMounted(() => {
+		initTradeData();
+
+		setInterval(() => {
+			countDown.value--;
+			if (countDown.value <= 0) {
+				initTradeData();
+				countDown.value = 10;
+			}
+		}, 1000);
+	});
 </script>
 
 <template>
-	<div class="d-flex align-items-end justify-content-between gap-5">
-		<span class="text-danger fw-bold">{{ trade.entryPrice }}</span>
-		<span class="text-success fw-bold">1.8930</span>
-	</div>
 	<div class="d-flex align-items-end justify-content-center gap-7">
-		<div>
-			<button class="btn btn-danger">Sell</button>
-		</div>
-		<div class="position-relative my-1">
-			<button
-				type="button"
-				class="btn p-0 btn-active-icon-primary btn-sm position-absolute top-50 translate-middle-y ms-4"
-			>
-				<i class="ki-outline fs-2 ki-minus-square"></i>
-			</button>
-
-			<input
-				type="text"
-				class="form-control text-center w-150px fs-7 px-12"
-				placeholder="1.849"
-			/>
+		<div class="d-flex flex-column">
+			<span class="text-danger fw-bold">{{ trade.close }}</span>
 
 			<button
-				type="button"
-				class="btn p-0 btn-active-icon-primary btn-sm position-absolute end-0 top-50 translate-middle-y me-2"
+				:disabled="sellLoader || buyLoader"
+				@click="sell()"
+				class="btn btn-danger"
 			>
-				<i class="ki-outline ki-plus-square fs-2"></i>
+				<span v-if="!sellLoader">Sell</span>
+				<span v-else>
+					<span class="spinner-border spinner-border-sm"></span>
+				</span>
 			</button>
 		</div>
-		<div>
-			<button class="btn btn-success">Buy</button>
+		<div class="d-flex flex-column">
+			<span class="text-center fw-bold">Lots</span>
+			<div class="d-block position-relative my-1">
+				<button
+					@click="lotBtn(LotA.SUB)"
+					type="button"
+					class="btn p-0 btn-active-icon-primary btn-sm position-absolute top-50 translate-middle-y ms-4"
+				>
+					<i class="ki-outline fs-2 ki-minus-square"></i>
+				</button>
+
+				<input
+					type="text"
+					class="form-control text-center w-125px fs-7 px-12"
+					v-model="lots"
+				/>
+
+				<button
+					@click="lotBtn(LotA.ADD)"
+					type="button"
+					class="btn p-0 btn-active-icon-primary btn-sm position-absolute end-0 top-50 translate-middle-y me-2"
+				>
+					<i class="ki-outline ki-plus-square fs-2"></i>
+				</button>
+			</div>
+		</div>
+		<div class="d-flex flex-column">
+			<span class="text-success fw-bold text-end">{{ trade.close }}</span>
+			<button
+				:disabled="sellLoader || buyLoader"
+				@click="buy()"
+				class="btn btn-success"
+			>
+				<span v-if="!buyLoader">Buy</span>
+				<span v-else>
+					<span class="spinner-border spinner-border-sm"></span>
+				</span>
+			</button>
 		</div>
 	</div>
 </template>
