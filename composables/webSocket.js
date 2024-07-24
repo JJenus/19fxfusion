@@ -1,6 +1,7 @@
 // import Stomp from "stompjs";
 
 export const useWebsocket = () => {
+	const fxApp = useFxApp();
 	const CONFIG = useRuntimeConfig().public;
 	const stompClient = useState("stomp-client", () => {});
 	const newPoint = useState("fx-live", () => ({
@@ -38,7 +39,8 @@ export const useWebsocket = () => {
 				stompClient.value.subscribe("/topic/fx", function (message) {
 					showNotification(message.body);
 					newPoint.value = JSON.parse(message.body);
-					console.log(newPoint.value);
+					fxApp.currentMarket.value = newPoint.value;
+					// console.log(newPoint.value);
 				});
 
 				// Subscribe to user-specific notifications
@@ -92,11 +94,11 @@ export const useWebsocket = () => {
 	}
 
 	function showNotification(message) {
-		console.log(message);
+		// console.log(message);
 	}
 
 	function showUserNotification(message) {
-		console.log(message);
+		// console.log(message);
 	}
 
 	return {

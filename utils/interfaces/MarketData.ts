@@ -7,4 +7,5 @@ export interface MarketData {
 	low: number;
 	timestamp: number;
 	transactions: number;
+	currencyPair?: string
 }

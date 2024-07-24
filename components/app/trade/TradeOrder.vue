@@ -7,12 +7,6 @@
 	const fxApp = useFxApp();
 	const trade = fxApp.currentMarket;
 
-	trade.value.close = ws.newPoint.value.close;
-	trade.value.high = ws.newPoint.value.high;
-	trade.value.low = ws.newPoint.value.low;
-	trade.value.volume = ws.newPoint.value.volume;
-	trade.value.timestamp = ws.newPoint.value.timestamp;
-	trade.value.volumeWeighted = ws.newPoint.value.volumeWeighted;
 	const buyLoader = ref(false);
 	const sellLoader = ref(false);
 	const countDown = ref(10);
@@ -37,12 +31,14 @@
 	}
 
 	const initTradeData = () => {
-		trade.value.close = ws.newPoint.value.close;
-		trade.value.high = ws.newPoint.value.high;
-		trade.value.low = ws.newPoint.value.low;
-		trade.value.volume = ws.newPoint.value.volume;
-		trade.value.timestamp = ws.newPoint.value.timestamp;
-		trade.value.volumeWeighted = ws.newPoint.value.volumeWeighted;
+		trade.value.close = fxApp.currentMarket.value.close;
+		trade.value.currencyPair = fxApp.currentMarket.value.currencyPair;
+		trade.value.open = fxApp.currentMarket.value.open;
+		trade.value.high = fxApp.currentMarket.value.high;
+		trade.value.low = fxApp.currentMarket.value.low;
+		trade.value.volume = fxApp.currentMarket.value.volume;
+		trade.value.timestamp = fxApp.currentMarket.value.timestamp;
+		trade.value.volumeWeighted = fxApp.currentMarket.value.volumeWeighted;
 	};
 
 	const lotBtn = (action: LotA) => {
@@ -53,27 +49,27 @@
 
 	const setTrade = () => {
 		placeTrade.value.lots = lots.value;
+		if (fxApp.pnLAction.value.status.tp) {
+			placeTrade.value.takeProfitPrice = fxApp.pnLAction.value.slTp.tp;
+		}
+		if (fxApp.pnLAction.value.status.sl) {
+			placeTrade.value.stopLossPrice = fxApp.pnLAction.value.slTp.sl;
+		}
 	};
 
 	const buy = () => {
 		placeTrade.value.tradeType = TradeType.LONG;
 		placeTrade.value.entryPrice = trade.value.open;
 		setTrade();
-		if (fxApp.pnLAction.value.status.tp) {
-			placeTrade.value.takeProfitPrice = fxApp.pnLAction.value.slTp.tp;
-		}
-		fxApp.tradeAction("POST", placeTrade.value, "trade", buyLoader);
+
+		fxApp.tradeAction("POST", placeTrade.value, "trades/place", buyLoader);
 	};
 
 	const sell = () => {
 		placeTrade.value.tradeType = TradeType.SHORT;
 		placeTrade.value.entryPrice = trade.value.close;
 		setTrade();
-		if (fxApp.pnLAction.value.status.sl) {
-			placeTrade.value.stopLossPrice = fxApp.pnLAction.value.slTp.sl;
-		}
-
-		fxApp.tradeAction("POST", placeTrade.value, "trade", sellLoader);
+		fxApp.tradeAction("POST", placeTrade.value, "trades/place", sellLoader);
 	};
 
 	onMounted(() => {

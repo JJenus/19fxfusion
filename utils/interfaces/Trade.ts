@@ -13,6 +13,7 @@ export interface Trade {
     profitLoss: number;
     closedBy?: ClosedBy;  // Optional because it might not be closed yet
     status: TradeStatus;
+    currencyPair?: string
 }
 
 export enum TradeType {

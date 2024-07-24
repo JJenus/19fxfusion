@@ -3,7 +3,7 @@
 	import {
 		INotification,
 		NotificationStatus,
-	} from "../../../utils/interfaces/Notification";
+	} from "~/utils/interfaces/Notification";
 
 	const props = defineProps<{ notification: INotification }>();
 	const nDate = () => {

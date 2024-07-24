@@ -4,6 +4,7 @@ import { MarketData } from "~/utils/interfaces/MarketData";
 import { type Trade, TradeStatus, TradeType } from "~/utils/interfaces/Trade";
 
 export const useFxApp = () => {
+	const user = userData().data;
 	const tradeIni: MarketData = {
 		volume: 0,
 		volumeWeighted: 0,
@@ -29,7 +30,7 @@ export const useFxApp = () => {
 			tp: 0,
 		},
 	}));
-	const orders = useState<Trade[]>("fx-order", () => []);
+	const orders = useState<Trade[]>("fx-order", () => user.value.trades || []);
 	const currentMarket = useState<MarketData>("current-trade", () => tradeIni);
 
 	const tradeAction = (
@@ -56,7 +57,11 @@ export const useFxApp = () => {
 		axios
 			.request(axiosConfig)
 			.then((response) => {
-				// data.value = response.data;
+				if (method == "post") {
+					user.value.trades?.push(response.data);
+					orders.value.push(response.data);
+				}
+				successAlert("Order placed")
 			})
 			.catch((error): void => {
 				console.log(error);
@@ -77,7 +82,7 @@ export const useFxApp = () => {
 		l: number;
 		t: number;
 		n: number;
-	}): MarketData => {
+	}, currencyPair: string): MarketData => {
 		return {
 			volume: data.v,
 			volumeWeighted: data.vw,
@@ -87,8 +92,9 @@ export const useFxApp = () => {
 			low: data.l,
 			timestamp: data.t,
 			transactions: data.n,
+			currencyPair
 		};
-	};
+	};	
 
 	return {
 		orders,

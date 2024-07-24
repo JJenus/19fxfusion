@@ -12,7 +12,7 @@
 		ws.connect();
 
 		watch(ws.newPoint, (newPoint, oldPoint) => {
-			console.log("NEW POINT", newPoint);
+			// console.log("NEW POINT", newPoint);
 		});
 
 		const hData = useLive().formattedData;
