@@ -1,5 +1,10 @@
 <script setup lang="ts">
-	import { Trade, TradeStatus, TradeType } from "~/utils/interfaces/Trade";
+	import {
+		ClosedBy,
+		Trade,
+		TradeStatus,
+		TradeType,
+	} from "~/utils/interfaces/Trade";
 	import currency from "currency.js";
 
 	const ws = useWebsocket();
@@ -12,13 +17,13 @@
 	const countDown = ref(10);
 
 	const initTrade: Trade = {
-		user: user.value,
+		user: { id: user.value.id! },
 		lots: 0,
 		tradeType: TradeType.LONG,
 		entryPrice: 0,
-		openTime: "",
 		profitLoss: 0,
 		status: TradeStatus.OPEN,
+		closedBy: ClosedBy.OPEN,
 	};
 
 	const placeTrade = ref(initTrade);
@@ -49,6 +54,7 @@
 
 	const setTrade = () => {
 		placeTrade.value.lots = lots.value;
+		placeTrade.value.currencyPair = trade.value.currencyPair;
 		if (fxApp.pnLAction.value.status.tp) {
 			placeTrade.value.takeProfitPrice = fxApp.pnLAction.value.slTp.tp;
 		}
@@ -128,7 +134,7 @@
 			</div>
 		</div>
 		<div class="d-flex flex-column">
-			<span class="text-success fw-bold text-end">{{ trade.close }}</span>
+			<span class="text-success fw-bold text-end">{{ trade.open }}</span>
 			<button
 				:disabled="sellLoader || buyLoader"
 				@click="buy()"

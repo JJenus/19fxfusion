@@ -21,6 +21,11 @@ export const userData = () => {
 
 	const transactions = useState<any[]>("user-transactions", () => []);
 	const notifications = useState<INotification[]>("notifications", () => []);
+	const unreadNotification = useState<INotification[]>(
+		"notifications",
+		() => []
+	);
+
 	const newNotification = useState<boolean>("new-notifications", () => false);
 	const data = useState<IUser>("userData", () => initUser);
 	const users = useState<IUser[]>("users", () => []);
@@ -80,7 +85,7 @@ export const userData = () => {
 	const getNotifications = () => {
 		const axiosConfig = {
 			method: "get",
-			url: `${useRuntimeConfig().public.BE_API}/notifications/${
+			url: `${useRuntimeConfig().public.BE_API}/notifications/user/${
 				data.value.id
 			}`,
 			timeout: 15000,
@@ -98,10 +103,10 @@ export const userData = () => {
 						new Date(a.createdAt!).getTime()
 				);
 
-				const unreadNotification = notifications.value.find(
+				unreadNotification.value = notifications.value.filter(
 					(notice) => notice.status === NotificationStatus.UNREAD
 				);
-				newNotification.value = !!unreadNotification; // Set to true if an unread notification is found, otherwise false
+				newNotification.value = unreadNotification.value.length > 0; // Set to true if an unread notification is found, otherwise false
 			})
 			.catch((error) => {
 				// console.log(error);
@@ -112,20 +117,11 @@ export const userData = () => {
 		if (!newNotification.value) {
 			return;
 		}
-		newNotification.value = false;
-
-		const unread = notifications.value.filter((e) => () => {
-			if (e.status === NotificationStatus.UNREAD) {
-				e.status = NotificationStatus.READ;
-				return true;
-			}
-			return false;
-		});
 
 		const axiosConfig = {
 			method: "put",
-			data: unread,
-			url: `${useRuntimeConfig().public.BE_API}/notifications/read/all`,
+			data: unreadNotification.value,
+			url: `${useRuntimeConfig().public.BE_API}/notifications/read-all`,
 			timeout: 25000,
 			headers: {
 				Authorization: "Bearer " + useAuth().userData.value?.token,
@@ -134,9 +130,14 @@ export const userData = () => {
 
 		axios
 			.request(axiosConfig)
-			.then((response: AxiosResponse<INotification[], any>) => {
+			.then((response: any) => {
 				setTimeout(() => {
-					notifications.value = response.data;
+					newNotification.value = false;
+
+					notifications.value.forEach(
+						(notification) =>
+							(notification.status = NotificationStatus.READ)
+					);
 				}, 3000);
 			})
 			.catch((error) => {

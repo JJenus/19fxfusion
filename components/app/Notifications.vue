@@ -1,5 +1,4 @@
 <script setup>
-	userData().getNotifications();
 	const notifications = userData().notifications;
 	let targetElement;
 	let container;
@@ -40,7 +39,7 @@
 
 		watch(ws.newNotification, (newNotification, oldPoint) => {
 			notification.value = newNotification;
-			notifications.value.push(newNotification);
+			notifications.value.unshift(newNotification);
 			
 			userData().newNotification.value = true;
 			showToast();

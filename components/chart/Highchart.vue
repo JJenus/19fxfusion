@@ -48,6 +48,6 @@
 </script>
 <template>
 	<div class="rounded overflow-hidden">
-		<div id="container"></div>
+		<div id="container" class="h-100"></div>
 	</div>
 </template>

@@ -23,6 +23,13 @@ export const useWebsocket = () => {
 		var socket = new SockJS(`${CONFIG.BE_API}/ws`);
 		stompClient.value = Stomp.over(socket);
 
+		stompClient.value.debug = (log) => {
+			if (JSON.stringify(log).includes('MESSAGE')) {
+			   return;
+			}
+			window.console.log(log);
+		 };
+
 		stompClient.value.connect({}, function (frame) {
 			console.log("Connected: " + frame);
 

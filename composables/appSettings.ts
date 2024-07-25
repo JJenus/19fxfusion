@@ -1,9 +1,9 @@
 import { AccountLevel } from "utils/interfaces/AccountLevel";
 import { AppSettings } from "utils/interfaces/AppSettings";
 import moment from "moment";
+import currency from "currency.js";
 
 export const useAppSettings = () => {
-
 	const init: AppSettings = {
 		id: 0,
 		defaultLanguage: "",
@@ -43,7 +43,7 @@ export const useAppSettings = () => {
 		activeNav.value = active;
 	};
 
-	const time = (data:string) => {
+	const time = (data: string) => {
 		const now = moment();
 		const inputTime = moment(data);
 
@@ -58,6 +58,12 @@ export const useAppSettings = () => {
 		}
 	};
 
+	const money = (amount: string | number, addSymbol?: boolean) => {
+		const symbol = addSymbol ? settings.value.defaultBaseCurrency : "";
+
+		return currency(amount).format({ symbol: symbol });
+	};
+
 	load(settings, "app-settings");
 	load(accountLevels, "account-levels");
 
@@ -69,5 +75,6 @@ export const useAppSettings = () => {
 		time,
 		setActiveNav,
 		load,
+		money
 	};
 };

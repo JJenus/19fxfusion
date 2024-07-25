@@ -37,7 +37,7 @@
 			<!--end::Logo-->
 
 			<div class="nav-item mx-auto d-flex align-items-center">
-				<span class="fw-bold fs-2">$20,000</span>
+				<AppUserBalance custom-class="fw-bold fs-2" />
 			</div>
 
 			<!--begin::Aside toggle-->

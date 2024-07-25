@@ -6,6 +6,7 @@ import { type Trade, TradeStatus, TradeType } from "~/utils/interfaces/Trade";
 export const useFxApp = () => {
 	const user = userData().data;
 	const tradeIni: MarketData = {
+		currencyPair: "EURUSD",
 		volume: 0,
 		volumeWeighted: 0,
 		open: 0,

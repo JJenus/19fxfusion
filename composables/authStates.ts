@@ -1,4 +1,4 @@
-import { AuthToken } from "../utils/interfaces/AuthToken";
+import { AuthToken } from "~/utils/interfaces/AuthToken";
 
 export const useAuth = () => {
 	const AUTH_KEY: string = "auth-login";

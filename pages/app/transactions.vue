@@ -26,7 +26,7 @@
 	const fetchTransactions = () => {
 		const axiosConfig = {
 			method: "get",
-			url: `${appConfig.public.BE_API}/transactions/${userId}`,
+			url: `${appConfig.public.BE_API}/transactions/user/${userId}`,
 			timeout: 15000,
 			headers: {
 				Authorization: "Bearer " + useAuth().userData.value?.token,
@@ -65,24 +65,55 @@
 </script>
 
 <template>
-	<!--begin::Engage widget 12-->
-	<div class="card card-custom border-0 min-h-450px h-md-100 mb-5 mb-lg-10">
-		<!--begin::Body-->
-		<div class="card-body ps-xl-15">
-			<h1 class="text-center h1 pt-4 fw-bold mb-8">Transactions</h1>
+	<div>
+		<div
+			class="card card-flush pb-0 bgi-position-y-center bgi-no-repeat mb-10"
+		>
+			<!--begin::Card header-->
+			<div class="card-body pt-10 mb-0">
+				<div class="d-flex align-items-center">
+					<!--begin::Icon-->
+					<div class="symbol symbol-circle me-5">
+						<div
+							class="symbol-label bg-transparent text-primary border border-secondary border-dashed"
+						>
+							<i
+								class="ki-solid ki-arrows-loop fs-2x text-danger"
+							></i>
+						</div>
+					</div>
+					<!--end::Icon-->
 
-			<div v-if="transactions.length == 0" class="text-muted text-center fw-bold">
-				No transaction
-			</div>
-			<div class="d-nonie">
-				<AppTransactionEntry
-					:showDetails="true"
-					v-for="transact in transactions"
-					:transaction="transact"
-				/>
+					<!--begin::Title-->
+					<div class="d-flex flex-column">
+						<h2 class="mb-1">Transactions</h2>
+					</div>
+					<!--end::Title-->
+				</div>
 			</div>
 		</div>
-		<!--end::Body-->
+		<!--begin::Engage widget 12-->
+		<div
+			class="card card-custom border-0 min-h-600px min-h-lg-700 mb-5 mb-lg-10 shadow"
+		>
+			<!--begin::Body-->
+			<div class="card-body ps-xl-15">
+				<div
+					v-if="transactions.length == 0"
+					class="text-muted text-center fw-bold"
+				>
+					No transaction
+				</div>
+				<div class="d-nonie">
+					<AppTransactionEntry
+						:showDetails="true"
+						v-for="transact in transactions"
+						:transaction="transact"
+					/>
+				</div>
+			</div>
+			<!--end::Body-->
+		</div>
+		<!--end::Engage widget 12-->
 	</div>
-	<!--end::Engage widget 12-->
 </template>

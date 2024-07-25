@@ -5,6 +5,7 @@
 
 	const user = userData().data;
 	const disabled = fxApp.pnLAction;
+	const loadingChat = ref(true);
 
 	enum LotA {
 		ADD,
@@ -30,13 +31,27 @@
 			currency(newLot).format({ symbol: "", precision: 5 })
 		).value;
 	};
+
+	onMounted(() => {
+		setTimeout(() => {
+			loadingChat.value = false;
+		}, 2000);
+	});
 </script>
 
 <template>
 	<div class="mt-n13 mt-lg-n10 mx-n8 mx-lg-n10">
 		<!--begin::Engage widget 12 mx-n5 -->
-		<div class="position-relative mb-7">
-			<ChartHighchart />
+		<div class="position-relative mb-7 chat-height">
+			<div
+				v-if="loadingChat"
+				class="h-100 position-absolute h-100 w-100 top-0 start-0 d-flex align-items-center justify-content-center"
+			>
+				<span
+					class="spinner-border spinner-border-smo z-index-3 text-muted"
+				></span>
+			</div>
+			<ChartHighchart class="h-100" />
 			<!-- <ChartLiteChart class="h-150px"/> -->
 		</div>
 		<!--end::Engage widget 12-->
@@ -45,7 +60,7 @@
 		<div class="card card-flush overflow-hidden mx-4 mx-md-0">
 			<!--begin::Card body-->
 			<div
-				class="card-body d-flex align-items-end justify-content-center p-4"
+				class="card-body d-flex align-items-end justify-content-center p-4 py-lg-9"
 			>
 				<div
 					class="d-flex justify-content-between gap-5 flex-wrap"
@@ -104,7 +119,7 @@
 					</div>
 
 					<div class="order-1 order-md-2 w-100 w-md-25">
-						<AppTradeOrder></AppTradeOrder>
+						<AppTradeAction></AppTradeAction>
 					</div>
 
 					<div class="order-3">
@@ -165,3 +180,15 @@
 		<!--end::Chart widget 36-->
 	</div>
 </template>
+
+<style scoped>
+	.chat-height {
+		height: 70vh !important;
+	}
+
+	@media (min-width: 586) {
+		.chat-height {
+			height: 75vh !important;
+		}
+	}
+</style>

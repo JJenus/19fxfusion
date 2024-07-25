@@ -11,7 +11,7 @@
 					<div
 						class="symbol-label bg-transparent text-primary border border-secondary border-dashed"
 					>
-						<i class="ki-outline ki-gear fs-2x text-primary"></i>
+						<i class="ki-outline ki-gear fs-2x text-danger"></i>
 					</div>
 				</div>
 				<!--end::Icon-->
