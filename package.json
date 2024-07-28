@@ -32,8 +32,9 @@
 		"nuxt-tradingview": "^1.3.1",
 		"qrcode": "^1.5.3",
 		"stompjs": "^2.3.3",
-		"sweetalert2": "^11.7.27",
+		"sweetalert2": "^11.6.13",
 		"swiper": "^10.3.1",
+		"universal-cookie": "^7.2.0",
 		"ws": "^8.17.0"
 	}
 }

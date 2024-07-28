@@ -1,5 +1,5 @@
-import { AccountLevel } from "utils/interfaces/AccountLevel";
-import { AppSettings } from "utils/interfaces/AppSettings";
+import { type AccountLevel } from "~/utils/interfaces/AccountLevel";
+import { type AppSettings } from "~/utils/interfaces/AppSettings";
 import moment from "moment";
 import currency from "currency.js";
 

@@ -281,13 +281,13 @@
 
 			<!--begin::Menu item-->
 			<div class="menu-item px-5">
-				<a
+				<div
 					@click="useAuth().logout()"
 					role="button"
 					class="menu-link px-5"
 				>
 					Sign Out
-				</a>
+				</div>
 			</div>
 			<!--end::Menu item-->
 		</div>

@@ -1,4 +1,3 @@
-import { IUser } from "./IUser";
 
 export interface Trade {
 	id?: number; // Optional because it's generated

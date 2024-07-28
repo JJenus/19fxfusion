@@ -50,8 +50,8 @@
 </script>
 
 <template>
-	<div class="" style="z-index: 30000">
-		<!--begin::Toast-->
+	<div >
+		<!--begin::Toast : class="" style="z-index: 30000" -->
 		<div
 			id="kt_docs_toast_stack_container"
 			class="mt-18 mt-lg-0 toast-container position-fixed top-0 end-0 p-3"

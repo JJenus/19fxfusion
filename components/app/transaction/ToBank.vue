@@ -1,5 +1,5 @@
 <script setup lang="ts">
-	import { Transaction } from "utils/interfaces/Transaction";
+	import {type Transaction } from "~/utils/interfaces/Transaction";
 
 	const form = useState<Transaction>("transaction-form");
 </script>

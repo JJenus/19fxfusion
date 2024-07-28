@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	import moment from "moment";
-	import { ClosedBy, Trade, TradeStatus } from "~/utils/interfaces/Trade";
+	import { ClosedBy, type Trade, TradeStatus } from "~/utils/interfaces/Trade";
 
 	const props = defineProps<{ order: Trade }>();
 

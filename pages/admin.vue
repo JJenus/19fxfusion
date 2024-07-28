@@ -1,7 +1,7 @@
 <script setup lang="ts">
-	import { IUser } from "utils/interfaces/IUser";
-	import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-	import { AuthToken } from "utils/interfaces/AuthToken";
+	import {type IUser } from "~/utils/interfaces/IUser";
+	import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
+	import { type AuthToken } from "~/utils/interfaces/AuthToken";
 
 	definePageMeta({
 		layout: "adminlayout",
@@ -30,7 +30,7 @@
 	});
 
 	const getUserData = () => {
-		if (!useAuth().userData.value) {
+		if (!useAuth().isAuthenticated()) {
 			useAuth().logout();
 			infoAlert("Session expired, please login.");
 		}

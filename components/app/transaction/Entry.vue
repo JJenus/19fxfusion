@@ -1,7 +1,7 @@
 <script setup lang="ts">
-	import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+	import axios, {type AxiosRequestConfig, type AxiosResponse } from "axios";
 	import moment from "moment";
-	import { IUser } from "utils/interfaces/IUser";
+	import { type IUser } from "~/utils/interfaces/IUser";
 
 	const props = defineProps({
 		showDetails: {

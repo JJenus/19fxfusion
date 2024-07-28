@@ -129,10 +129,6 @@
 						/>
 						<!--end::Drawer toggle-->
 					</a>
-
-					<!--begin::User account menu-->
-					<UserDropdown class="d-none" />
-					<!--end::User account menu-->
 					<!--end::Menu wrapper-->
 				</div>
 				<!--end::User menu-->

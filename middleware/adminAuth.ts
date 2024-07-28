@@ -1,4 +1,4 @@
-import { AuthToken } from "utils/interfaces/AuthToken";
+import { type AuthToken } from "~/utils/interfaces/AuthToken";
 
 export default defineNuxtRouteMiddleware((to, from) => {
 	// if (to.params.id === "1") {

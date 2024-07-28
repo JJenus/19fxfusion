@@ -1,6 +1,6 @@
 import axios from "axios";
 import { FxCurrency } from "~/utils/enums/FxCurrency";
-import { MarketData } from "~/utils/interfaces/MarketData";
+import { type MarketData } from "~/utils/interfaces/MarketData";
 import { type Trade, TradeStatus, TradeType } from "~/utils/interfaces/Trade";
 
 export const useFxApp = () => {

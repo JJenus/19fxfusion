@@ -1,14 +1,15 @@
-import { AuthToken } from "~/utils/interfaces/AuthToken";
+import { type AuthToken } from "~/utils/interfaces/AuthToken";
 
 export const useAuth = () => {
 	const AUTH_KEY: string = "auth-login";
 	const appUser = userData();
 	const authUserData = useState<AuthToken | null>("user", () => null);
 	const authenticated = useState<boolean>("isAuthenticated", () => false);
-	const userAuth = useCookie<AuthToken | null>(AUTH_KEY, {
-		maxAge: 60 * 60 * 24,
-	});
 	const openAuth = useState<string>("authAction", () => "login");
+
+	const userAuth = useCookie<AuthToken | null>(`${AUTH_KEY}`, {
+		maxAge: 60 * 60 * 24 * 30,
+	});
 
 	const openAuthModal = (action: string) => {
 		openAuth.value = action;
@@ -17,7 +18,7 @@ export const useAuth = () => {
 	const login = (auth: AuthToken) => {
 		//store cookie
 		userAuth.value = auth;
-		console.log(userAuth.value);
+		console.log("LOGIN", useCookie(`${AUTH_KEY}`).value, userAuth.value);
 
 		//set essential values
 		appUser.data.value = auth.user;
@@ -26,25 +27,26 @@ export const useAuth = () => {
 		authenticated.value = true;
 
 		// redirect to appropriate account
-		if (auth.user.userRole === "admin") {
-			// navigateTo("/admin");
-			window.location.href = "/admin";
-		} else {
-			window.location.href = "/app";
-		}
+		// if (auth.user.userRole === "admin") {
+		// 	// navigateTo("/admin");
+		// 	window.location.href = "/admin";
+		// } else {
+		// 	window.location.href = "/app";
+		// }
 	};
 
 	const logout = () => {
 		try {
 			useWebsocket().disconnect();
 		} catch (error) {}
-		
+
 		authUserData.value = null;
 		authenticated.value = false;
 		useCookie(AUTH_KEY, { maxAge: -1 });
 
-		userAuth.value = null;
-		window.location.href = "/";
+		// userAuth.value = null;
+		// if (process.client) window.location.href = "/";
+		// else navigateTo("/");
 	};
 
 	const isAuthenticated = () => {
@@ -52,9 +54,9 @@ export const useAuth = () => {
 			return true;
 		}
 
-		const auth = useCookie<AuthToken>(AUTH_KEY);
-		// console.log(auth);
-		if (auth.value == null || auth.value == undefined) {
+		const auth = userAuth;
+		console.log("AUTH", auth.value);
+		if (auth.value === null || auth.value === undefined) {
 			return false;
 		}
 

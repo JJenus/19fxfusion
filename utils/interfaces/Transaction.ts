@@ -1,5 +1,4 @@
-import { Beneficiary } from "./Beneficiary";
-import { IUser } from "./IUser";
+import { type IUser } from "./IUser";
 
 export interface Transaction  {
 	id?: number;  // Optional because it's generated

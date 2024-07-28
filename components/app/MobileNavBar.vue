@@ -1,7 +1,7 @@
 <script setup lang="ts">
 	const route = useRoute();
 	const path = route.path;
-	console.log(path);
+	// console.log(path);
 	const active = useAppSettings().activeNav;
 	const setNav = useAppSettings().setActiveNav;
 	active.value = path;
@@ -29,7 +29,6 @@
 				"
 				class="btn btn-icon w-35px btn-active-primary btn-outline-dashed hover-scale btn-icon-primary btn-text-primary h-40px w-40px h-md-40px"
 			>
-				<!-- <NuxtLink ></NuxtLink> -->
 				<i :class="nav.icon" class="fs-2x">
 					<i v-for="path in nav.paths" :class="path"></i>
 				</i>

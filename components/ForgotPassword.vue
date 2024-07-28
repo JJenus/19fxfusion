@@ -1,5 +1,5 @@
 <script setup lang="ts">
-	import axios, { AxiosRequestConfig } from "axios";
+	import axios, { type AxiosRequestConfig } from "axios";
 
 	const appConfig = useRuntimeConfig();
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 	import {
 		ClosedBy,
-		Trade,
+		type Trade,
 		TradeStatus,
 		TradeType,
 	} from "~/utils/interfaces/Trade";

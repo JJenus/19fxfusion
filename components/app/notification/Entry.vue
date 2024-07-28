@@ -1,7 +1,7 @@
 <script setup lang="ts">
 	import moment from "moment";
 	import {
-		INotification,
+		type INotification,
 		NotificationStatus,
 	} from "~/utils/interfaces/Notification";
 

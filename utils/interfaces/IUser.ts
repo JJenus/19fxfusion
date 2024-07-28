@@ -1,5 +1,5 @@
-import { Trade } from "./Trade";
-import { Transaction } from "./Transaction";
+import { type Trade } from "./Trade";
+import { type Transaction } from "./Transaction";
 
 export interface IUser {
     id?: number;  // Optional because it's generated

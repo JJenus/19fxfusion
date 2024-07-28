@@ -1,5 +1,5 @@
 <script setup lang="ts">
-	import axios, { AxiosResponse } from "axios";
+	import axios, { type AxiosResponse } from "axios";
 	import type { AuthToken } from "~/utils/interfaces/AuthToken";
 
 	const appConfig = useRuntimeConfig();
